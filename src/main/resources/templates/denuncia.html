@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denuncie! — Guardiãs das Águas</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="painel-admin"
+     sec:authorize="isAuthenticated() and hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<main>
+
+    <section class="denuncie-hero">
+        <h1>Denuncie!</h1>
+        <p>
+            Viu algo errado acontecendo com os rios, nascentes ou áreas verdes
+            da sua região? Sua denúncia pode fazer toda a diferença na preservação
+            dos nossos recursos hídricos.
+        </p>
+    </section>
+
+    <div class="denuncie-aviso">
+        <i class="fa-solid fa-shield-halved"></i>
+        <p>
+            <strong>Suas informações são sigilosas.</strong>
+            Os órgãos competentes garantem o anonimato do denunciante — você não
+            precisa se identificar para registrar uma denúncia ambiental.
+        </p>
+    </div>
+
+    <div class="denuncie-grid">
+
+        <div class="denuncia-card emergencia">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3>Emergência Ambiental</h3>
+            <p>Risco imediato à vida, incêndio ou flagrante em andamento.</p>
+            <div class="denuncia-card-contato">
+                <a href="tel:190"><i class="fa-solid fa-phone"></i> 190 — Polícia Ambiental (PMMG)</a>
+                <a href="tel:193"><i class="fa-solid fa-phone"></i> 193 — Corpo de Bombeiros</a>
+                <a href="tel:199"><i class="fa-solid fa-phone"></i> 199 — Defesa Civil</a>
+            </div>
+        </div>
+
+        <div class="denuncia-card">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <h3>IBAMA</h3>
+            <p>Denúncias de desmatamento, incêndio florestal, maus-tratos ou venda ilegal de animais e outros danos ambientais não emergenciais.</p>
+            <div class="denuncia-card-contato">
+                <a href="tel:08000618080"><i class="fa-solid fa-phone"></i> 0800 061 8080</a>
+                <span>Grátis, todo o Brasil</span>
+            </div>
+        </div>
+
+        <div class="denuncia-card">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3>Disque Denúncia</h3>
+            <p>Canal nacional de denúncias anônimas para qualquer tipo de crime.</p>
+            <div class="denuncia-card-contato">
+                <a href="tel:181"><i class="fa-solid fa-phone"></i> 181</a>
+                <span>Sigilo garantido</span>
+            </div>
+        </div>
+
+        <div class="denuncia-card">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-water"></i>
+            </div>
+            <h3>Patrulha Ambiental — Uberlândia</h3>
+            <p>Denúncias locais sobre poluição, queimadas e degradação ambiental na cidade.</p>
+            <div class="denuncia-card-contato">
+                <a href="tel:08009401133"><i class="fa-solid fa-phone"></i> 0800 940 1133</a>
+                <a href="tel:3432353117"><i class="fa-solid fa-phone"></i> (34) 3235-3117</a>
+            </div>
+        </div>
+
+        <div class="denuncia-card">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3>Secretaria de Meio Ambiente — Uberlândia</h3>
+            <p>Licenciamento, fiscalização e questões ambientais do município.</p>
+            <div class="denuncia-card-contato">
+                <a href="tel:3432392598"><i class="fa-solid fa-phone"></i> (34) 3239-2598</a>
+                <span>Seg. a sex., das 12h às 17h</span>
+            </div>
+        </div>
+
+        <div class="denuncia-card">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-faucet-drip"></i>
+            </div>
+            <h3>Ligue Fácil DMAE</h3>
+            <p>Problemas com água ou esgoto em Uberlândia.</p>
+            <div class="denuncia-card-contato">
+                <a href="tel:115"><i class="fa-solid fa-phone"></i> 115</a>
+                <a href="tel:3432576900"><i class="fa-solid fa-phone"></i> (34) 3257-6900</a>
+                <a href="https://www.uberlandia.mg.gov.br/prefeitura/orgaos-municipais/dmae/"
+                   target="_blank" rel="noopener">
+                    <i class="fa-solid fa-globe"></i> Site da DMAE
+                </a>
+            </div>
+        </div>
+
+        <div class="denuncia-card">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-droplet"></i>
+            </div>
+            <h3>Agência Nacional de Águas e Saneamento Básico (ANA)</h3>
+            <p>Regulação e fiscalização dos recursos hídricos e saneamento básico no Brasil.</p>
+            <div class="denuncia-card-contato">
+                <a href="https://www.gov.br/ana/pt-br" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-globe"></i> gov.br/ana
+                </a>
+            </div>
+        </div>
+
+        <div class="denuncia-card">
+            <div class="denuncia-card-icone">
+                <i class="fa-solid fa-water"></i>
+            </div>
+            <h3>COPASA</h3>
+            <p>Abastecimento de água e esgoto em Minas Gerais — solicitações de manutenção e informações sobre a rede.</p>
+            <div class="denuncia-card-contato">
+                <a href="https://www.copasa.com.br/wps/portal/internet/"
+                   target="_blank" rel="noopener">
+                    <i class="fa-solid fa-globe"></i> copasa.com.br
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="denuncie-passos">
+        <h2>Como fazer uma boa denúncia</h2>
+        <div class="passos-lista">
+            <div class="passo">
+                <div class="passo-numero">1</div>
+                <p>Descreva o que está acontecendo com clareza: o que viu, quando e onde.</p>
+            </div>
+            <div class="passo">
+                <div class="passo-numero">2</div>
+                <p>Informe o endereço ou um ponto de referência próximo ao local.</p>
+            </div>
+            <div class="passo">
+                <div class="passo-numero">3</div>
+                <p>Se possível, reúna fotos, vídeos ou outras evidências do ocorrido.</p>
+            </div>
+            <div class="passo">
+                <div class="passo-numero">4</div>
+                <p>Escolha o canal mais adequado ao caso e faça sua denúncia.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script type="module" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta do Projeto — Guardiãs das Águas</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/projeto-geral.css}">
+    <link rel="stylesheet" th:href="@{/css/projetos.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════
+         HEADER
+     ═══════════════════════════════════════ -->
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- ═══════════════════════════════════════
+         BOTÃO — ADMINISTRADOR / OPERADOR
+     ═══════════════════════════════════════ -->
+
+<div class="painel-admin"
+     sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<!-- ═══════════════════════════════════════
+         CONTEÚDO PRINCIPAL
+     ═══════════════════════════════════════ -->
+
+<main>
+
+    <!-- ══════════════════════
+             HERO DA PÁGINA
+         ══════════════════════ -->
+
+    <section class="projeto-geral-hero">
+        <h1>Proposta do Projeto</h1>
+        <p>Conheça o objetivo do Guardiãs das Águas, a equipe que faz o projeto acontecer e até onde já conseguimos chegar pelo Brasil.</p>
+    </section>
+
+    <!-- ══════════════════════
+             SOBRE O PROJETO
+         ══════════════════════ -->
+
+    <section class="proposta-objetivo">
+        <p>
+            O <strong>Guardiãs das Águas</strong> é apoiado pelo Conselho Nacional de Desenvolvimento Científico e
+            Tecnológico (CNPq), pelo Ministério da Ciência, Tecnologia e Inovação (MCTI) e pelo Ministério das Mulheres (MM),
+            na Chamada CNPq/MCTI/MMulheres nº 31/2023. Nossa missão é incluir meninas e mulheres nas Ciências, promovendo
+            ações locais de saneamento ambiental e de conservação dos ecossistemas aquáticos.
+        </p>
+    </section>
+
+    <!-- ══════════════════════
+             OBJETIVOS
+         ══════════════════════ -->
+
+    <section class="secao-titulo">
+        <h2>Nossos Objetivos</h2>
+    </section>
+
+    <section class="proposta-objetivo">
+        <p>
+            <strong>1.</strong> Estimular o interesse, o ingresso e a formação de grupos de Guardiãs das Águas,
+            promovendo o pensamento crítico e participativo de meninas acerca da cidadania, empoderamento feminino e
+            meio ambiente, para que possam estudar e atuar profissionalmente em carreiras ligadas às Ciências Exatas,
+            Engenharias e Computação, principalmente no saneamento ambiental.
+        </p>
+        <p>
+            <strong>2.</strong> Fortalecer grupos locais que desenvolvem pesquisas relacionadas ao saneamento
+            ambiental, ampliando o debate com a sociedade civil local a partir de ações extensionistas.
+        </p>
+        <p>
+            <strong>3.</strong> Formar mulheres e meninas para atuar como agentes multiplicadoras nas comunidades a
+            que pertencem, estimulando a percepção ambiental da comunidade em relação à importância do saneamento
+            ambiental — sobretudo quanto à conservação dos recursos hídricos, ao tratamento de água e esgoto, à
+            redução e destinação correta dos resíduos sólidos, e à compreensão das fontes de poluição e métodos de
+            controle.
+        </p>
+    </section>
+
+    <!-- ══════════════════════
+             EQUIPE
+         ══════════════════════ -->
+
+    <section class="secao-titulo">
+        <h2>Nossa Equipe</h2>
+        <p>As pessoas que fazem o Guardiãs das Águas acontecer todos os dias.</p>
+    </section>
+
+    <section class="carrossel-genérico-wrap">
+        <div id="carrossel-equipe"></div>
+    </section>
+
+    <!-- ══════════════════════
+             MAPA DE NÚCLEOS
+         ══════════════════════ -->
+
+    <section class="mapa-nucleos-secao">
+        <h2>Até onde já chegamos</h2>
+        <p>Clique em um marcador para conhecer o núcleo daquela região.</p>
+        <div id="mapa-nucleos"></div>
+    </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════
+         FOOTER
+     ═══════════════════════════════════════ -->
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- ═══════════════════════════════════════
+         SCRIPTS
+     ═══════════════════════════════════════ -->
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- JS -->
+
+<script type="module" th:src="@{/js/script.js}"></script>
+<script type="module" th:src="@{/js/propostaDoProjeto.js}"></script>
+
+</body>
+</html>

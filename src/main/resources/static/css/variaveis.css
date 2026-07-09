@@ -1,0 +1,16 @@
+:root{
+
+    --cor-primaria: #5b289e;
+    --cor-secundaria: #8f73b2;
+    --cor-azul: #91b0d4;
+
+    --cor-fundo: #f5f2fa;
+    --cor-texto: #333;
+    --cor-texto-forte: #2b1150;
+
+    --brilho-protetor:
+        0 4px 15px rgba(255,255,255,.7);
+
+    --fonte-principal:
+        'Poppins', sans-serif;
+}

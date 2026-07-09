@@ -1,0 +1,293 @@
+/* ================================= */
+/* ANIMAÇÕES */
+/* ================================= */
+
+@keyframes entradaSuaveHero {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes zoomHero {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* ================================= */
+/* HERO */
+/* ================================= */
+
+.hero-integrado {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: clamp(120px, 14vw, 160px);
+    padding-bottom: 4rem;
+}
+
+/* ================================= */
+/* HERO BACKGROUND */
+/* ================================= */
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+
+.bg-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 2s ease;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+}
+
+.bg-slide.active {
+    opacity: 1;
+    animation: zoomHero 10s linear forwards;
+}
+
+.bg-slide:nth-child(1) {
+    background-image:
+    url("../img/fundo_carrosel.png");
+}
+
+.bg-slide:nth-child(2) {
+    background-image:
+    url("../img/fundo_carrosel2.jpeg");
+}
+
+.bg-slide:nth-child(3) {
+    background-image:
+    url("../img/fundo_carrosel3.jpg");
+}
+
+.overlay-hero {
+    position: absolute;
+    inset: 0;
+    background: rgba(212,170,196,.45);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+/* ================================= */
+/* HERO LAYOUT */
+/* ================================= */
+
+.hero-layout-duplo {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6rem;
+    width: 92%;
+    max-width: 1500px;
+    margin: auto;
+}
+
+/* ================================= */
+/* HERO ESQUERDA */
+/* ================================= */
+
+.hero-coluna-esquerda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hero-texto h2 {
+    font-size: clamp(4rem, 5vw, 6rem);
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    line-height: 1.1;
+    margin-bottom: .5rem;
+}
+
+.hero-texto h3 {
+    font-size: clamp(2rem, 2.5vw, 2.8rem);
+    color: var(--cor-primaria);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.hero-texto p {
+    font-size: 1.8rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.hero-coluna-esquerda .hero-texto h2,
+.hero-coluna-esquerda .hero-texto h3,
+.hero-coluna-esquerda .hero-texto p,
+.hero-coluna-esquerda .hero-texto .btn-cta {
+    opacity: 0;
+
+    animation:
+        entradaSuaveHero 1.2s ease-in-out forwards;
+}
+
+.hero-coluna-esquerda .hero-texto h2 {
+    animation-delay: .2s;
+}
+
+.hero-coluna-esquerda .hero-texto h3 {
+    animation-delay: .5s;
+}
+
+.hero-coluna-esquerda .hero-texto p {
+    animation-delay: .8s;
+}
+
+.hero-coluna-esquerda .hero-texto .btn-cta {
+    animation-delay: 1.1s;
+}
+
+/* ================================= */
+/* BOTÃO CTA */
+/* ================================= */
+
+.btn-cta {
+    display: inline-block;
+    padding: 1.5rem 3.5rem;
+    background: var(--cor-primaria);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+
+    box-shadow:
+        0 10px 20px rgba(91,40,158,.2);
+
+    transition: .3s ease;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(91,40,158,.4);
+
+    filter: brightness(1.05);
+}
+
+/* ================================= */
+/* HERO DIREITA */
+/* ================================= */
+
+.hero-coluna-direita {
+    flex: 1;
+    background: rgba(255,255,255,.20);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 30px;
+    padding: 4rem;
+
+    box-shadow:
+        0 20px 50px rgba(91,40,158,.25);
+
+    opacity: 0;
+
+    animation:
+        entradaSuaveHero 1.8s ease forwards .7s;
+}
+
+/* ================================= */
+/* SOBRE O PROJETO */
+/* ================================= */
+
+.sobre-integrado h2 {
+    color: var(--cor-primaria);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.sobre-integrado .texto p {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* ================================= */
+/* VÍDEO */
+/* ================================= */
+
+.video-responsivo {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 3rem;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.1);
+}
+
+.video-responsivo iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ================================= */
+/* RESPONSIVIDADE */
+/* ================================= */
+
+@media (max-width: 1024px) {
+
+    .hero-layout-duplo {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .hero-coluna-esquerda,
+    .hero-coluna-direita {
+        width: 100% !important;
+    }
+
+    .hero-coluna-esquerda {
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero-texto {
+        max-width: 700px;
+    }
+
+    .hero-coluna-direita {
+        padding: 3rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

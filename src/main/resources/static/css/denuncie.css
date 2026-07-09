@@ -1,0 +1,226 @@
+/* ================================= */
+/* HERO DENUNCIE */
+/* ================================= */
+
+.denuncie-hero {
+    text-align: center;
+    padding: 8rem 2rem 3rem;
+}
+
+.denuncie-hero h1 {
+    font-size: 3.8rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1.2rem;
+}
+
+.denuncie-hero p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* AVISO DE SIGILO */
+/* ================================= */
+
+.denuncie-aviso {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 2rem 2.5rem;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    background: rgba(255,255,255,.22);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+}
+
+.denuncie-aviso i {
+    font-size: 2.4rem;
+    color: var(--cor-primaria);
+    margin-top: .2rem;
+}
+
+.denuncie-aviso p {
+    font-size: 1.5rem;
+    color: var(--cor-texto-forte);
+    line-height: 1.6;
+}
+
+.denuncie-aviso strong {
+    color: var(--cor-primaria);
+}
+
+/* ================================= */
+/* GRID DE CONTATOS */
+/* ================================= */
+
+.denuncie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+.denuncia-card {
+    position: relative;
+    padding: 3rem 2.5rem;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 30px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    transition: .4s ease;
+}
+
+.denuncia-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 70px rgba(91,40,158,.2);
+}
+
+.denuncia-card-icone {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: var(--cor-primaria);
+    color: #fff;
+    font-size: 2.2rem;
+
+    box-shadow: 0 10px 25px rgba(91,40,158,.35);
+}
+
+.denuncia-card h3 {
+    font-size: 2rem;
+    color: var(--cor-texto-forte);
+}
+
+.denuncia-card p {
+    font-size: 1.45rem;
+    color: var(--cor-texto);
+}
+
+.denuncia-card-contato {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding-top: 1rem;
+}
+
+.denuncia-card-contato a {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+}
+
+.denuncia-card-contato a:hover {
+    color: var(--cor-texto-forte);
+    transform: translateX(4px);
+}
+
+.denuncia-card-contato span {
+    font-size: 1.3rem;
+    color: var(--cor-texto);
+    opacity: .8;
+}
+
+/* destaque para o card de emergência */
+.denuncia-card.emergencia {
+    background: linear-gradient(135deg, rgba(91,40,158,.85), rgba(143,115,178,.85));
+    color: #fff;
+}
+
+.denuncia-card.emergencia h3,
+.denuncia-card.emergencia p,
+.denuncia-card.emergencia .denuncia-card-contato span {
+    color: #fff;
+}
+
+.denuncia-card.emergencia .denuncia-card-icone {
+    background: rgba(255,255,255,.25);
+}
+
+.denuncia-card.emergencia .denuncia-card-contato a {
+    color: #fff;
+}
+
+/* ================================= */
+/* COMO DENUNCIAR */
+/* ================================= */
+
+.denuncie-passos {
+    max-width: 1000px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+}
+
+.denuncie-passos h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 3rem;
+}
+
+.passos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+}
+
+.passo {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+}
+
+.passo-numero {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 1.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: var(--cor-primaria);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.passo p {
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+}

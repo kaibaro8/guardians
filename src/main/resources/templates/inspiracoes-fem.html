@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspirações Femininas — Guardiãs das Águas</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- BOTÃO ADMIN -->
+<div class="painel-admin"
+     sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<main>
+
+    <section class="museu">
+
+        <div class="container">
+
+            <h2>Museu das Inspirações Femininas</h2>
+
+            <p>
+                Mulheres que transformaram a ciência, a educação, a tecnologia e a sociedade.
+                Explore cada obra em destaque e conheça as histórias por trás delas.
+            </p>
+
+            <div class="museu-carrossel-area">
+
+                <button class="museu-seta anterior" aria-label="Anterior">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <div class="museu-stage"></div>
+
+                <button class="museu-seta proximo" aria-label="Próximo">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+            <div class="museu-indicadores"></div>
+
+        </div>
+
+    </section>
+
+    <section class="museu-salas-secao" id="museu-salas">
+        <!-- preenchido dinamicamente pelo museu.js -->
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- SCRIPTS -->
+<script type="module" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

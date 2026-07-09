@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos — Guardiãs das Águas</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- BOTÃO ADMIN -->
+<div class="painel-admin"
+     sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<main>
+
+    <section class="projetos-hero">
+        <h1>Eventos</h1>
+        <p>Conheça as atividades realizadas pelas Guardiãs das Águas em cada núcleo pelo Brasil.</p>
+    </section>
+
+    <div class="filtros-regiao" id="projetos-filtros"></div>
+
+    <section class="projetos-grid" id="projetos-grid"></section>
+
+</main>
+
+<div class="projeto-modal" id="projeto-modal"></div>
+
+<!-- FOOTER -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- SCRIPTS -->
+<script type="module" th:src="@{/js/script.js}"></script>
+<script type="module">
+    import { iniciarEventos } from "/js/eventos.js";
+    document.addEventListener("DOMContentLoaded", iniciarEventos);
+</script>
+
+</body>
+</html>

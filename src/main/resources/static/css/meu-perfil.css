@@ -1,0 +1,702 @@
+/* =====================================================
+   PÁGINA MEU PERFIL
+===================================================== */
+
+.perfil-main{
+
+    padding-top: 130px;
+    padding-bottom: 80px;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =====================================================
+   HERO / BANNER DE PERFIL
+===================================================== */
+
+.perfil-hero{
+
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+
+    background-image: linear-gradient(
+        -45deg,
+        rgba(233,216,166,.20),
+        rgba(231,162,199,.20),
+        rgba(140,111,179,.20),
+        rgba(127,159,193,.20),
+        rgba(127,174,196,.20)
+    );
+
+    background-size: 300% 300%;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    background-color: rgba(255,255,255,.25);
+
+    border-radius: 25px;
+
+    padding: 3rem;
+
+    border-top: 2px solid rgba(255,255,255,.5);
+
+    box-shadow: 0 15px 30px rgba(91,40,158,.25);
+
+    animation: gradient 12s ease infinite;
+
+    margin-bottom: 3rem;
+}
+
+.perfil-avatar-wrap{
+
+    position: relative;
+
+    width: 140px;
+    height: 140px;
+
+    flex-shrink: 0;
+}
+
+.perfil-avatar{
+
+    width: 140px;
+    height: 140px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 4px solid rgba(255,255,255,.7);
+
+    box-shadow: 0 8px 20px rgba(91,40,158,.3);
+}
+
+.avatar-cam{
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--cor-primaria);
+
+    border-radius: 50%;
+
+    font-size: 1.6rem;
+
+    box-shadow: 0 4px 10px rgba(91,40,158,.4);
+
+    transition: .3s;
+}
+
+.avatar-cam:hover{
+
+    transform: scale(1.1);
+}
+
+.perfil-hero-info h2{
+
+    color: var(--cor-texto-forte);
+
+    margin-bottom: .3rem;
+
+    font-size: 2.6rem;
+}
+
+.perfil-hero-info p{
+
+    font-size: 1.5rem;
+
+    opacity: .8;
+
+    margin-bottom: 1rem;
+}
+
+.perfil-role{
+
+    display: inline-block;
+
+    padding: .7rem 1.6rem;
+
+    background: var(--cor-primaria);
+
+    color: white;
+
+    border-radius: 999px;
+
+    font-size: 1.3rem;
+
+    font-weight: 600;
+}
+
+/* =====================================================
+   MENSAGENS DE FEEDBACK
+===================================================== */
+
+.flash{
+
+    width: 100%;
+    max-width: 1200px;
+
+    padding: 1.5rem 2rem;
+
+    border-radius: 14px;
+
+    margin-bottom: 2rem;
+
+    font-size: 1.5rem;
+
+    font-weight: 500;
+}
+
+.flash-sucesso{
+
+    background: rgba(127,174,196,.25);
+
+    border-left: 4px solid var(--cor-primaria);
+
+    color: var(--cor-texto-forte);
+}
+
+.flash-erro{
+
+    background: rgba(231,162,199,.3);
+
+    border-left: 4px solid #c0392b;
+
+    color: var(--cor-texto-forte);
+}
+
+/* =====================================================
+   NAVEGAÇÃO POR ABAS
+===================================================== */
+
+.perfil-tabs{
+
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 2.5rem;
+}
+
+.tab-btn{
+
+    padding: 1.2rem 2.4rem;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.35);
+
+    color: var(--cor-texto-forte);
+
+    font-size: 1.5rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    transition: .3s;
+}
+
+.tab-btn:hover{
+
+    background: rgba(255,255,255,.55);
+
+    transform: translateY(-2px);
+}
+
+.tab-btn.active{
+
+    background: var(--cor-primaria);
+
+    color: white;
+
+    box-shadow: 0 8px 20px rgba(91,40,158,.3);
+}
+
+/* =====================================================
+   PAINÉIS DE ABA
+===================================================== */
+
+.tab-pane{
+
+    width: 100%;
+    max-width: 1200px;
+
+    display: none;
+}
+
+.tab-pane.active{
+
+    display: block;
+
+    animation: fadeInUp .4s ease;
+}
+
+@keyframes fadeInUp{
+
+    from{
+
+        opacity: 0;
+
+        transform: translateY(15px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+/* =====================================================
+   CARD DE PERFIL (CONTAINER DE FORMULÁRIOS)
+===================================================== */
+
+.perfil-card{
+
+    background-image: linear-gradient(
+        -45deg,
+        rgba(233,216,166,.20),
+        rgba(231,162,199,.20),
+        rgba(140,111,179,.20),
+        rgba(127,159,193,.20),
+        rgba(127,174,196,.20)
+    );
+
+    background-size: 300% 300%;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    background-color: rgba(255,255,255,.25);
+
+    border-radius: 25px;
+
+    padding: 3rem;
+
+    border-top: 2px solid rgba(255,255,255,.5);
+
+    box-shadow: 0 15px 30px rgba(91,40,158,.25);
+
+    animation: gradient 12s ease infinite;
+}
+
+.perfil-card-title{
+
+    font-size: 2.2rem;
+
+    font-weight: 700;
+
+    color: var(--cor-primaria);
+
+    margin-bottom: 2.5rem;
+
+    padding-bottom: 1.2rem;
+
+    border-bottom: 1px solid rgba(91,40,158,.15);
+}
+
+/* =====================================================
+   FORMULÁRIOS
+===================================================== */
+
+.form-group{
+
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 1.8rem;
+}
+
+.form-group label{
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    color: var(--cor-texto-forte);
+
+    margin-bottom: .6rem;
+}
+
+.info-tag{
+
+    display: inline-block;
+
+    margin-left: .6rem;
+
+    padding: .2rem .8rem;
+
+    background: rgba(91,40,158,.15);
+
+    color: var(--cor-primaria);
+
+    border-radius: 999px;
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select{
+
+    padding: 1.2rem 1.5rem;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(91,40,158,.2);
+
+    background: rgba(255,255,255,.6);
+
+    font-size: 1.5rem;
+
+    color: var(--cor-texto-forte);
+
+    transition: .3s;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    outline: none;
+
+    border-color: var(--cor-primaria);
+
+    background: rgba(255,255,255,.9);
+
+    box-shadow: 0 0 0 3px rgba(91,40,158,.15);
+}
+
+.input-readonly{
+
+    background: rgba(0,0,0,.05) !important;
+
+    color: #777 !important;
+
+    cursor: not-allowed;
+}
+
+.row-2{
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1.8rem;
+}
+
+.campo-erro{
+
+    font-size: 1.2rem;
+
+    color: #c0392b;
+
+    margin-top: .4rem;
+}
+
+.campo-info{
+
+    font-size: 1.2rem;
+
+    opacity: .65;
+
+    margin-top: .5rem;
+}
+
+.form-actions{
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 1rem;
+}
+
+.btn-salvar{
+
+    padding: 1.2rem 2.8rem;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: var(--cor-primaria);
+
+    color: white;
+
+    font-size: 1.5rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.btn-salvar:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 20px rgba(91,40,158,.3);
+}
+
+/* =====================================================
+   REQUISITOS DE SENHA
+===================================================== */
+
+.senha-requisitos{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: .4rem;
+
+    margin-top: .8rem;
+
+    font-size: 1.2rem;
+}
+
+.senha-requisitos span{
+
+    opacity: .65;
+
+    transition: .3s;
+}
+
+.senha-requisitos span.valido{
+
+    opacity: 1;
+
+    color: #27ae60;
+}
+
+/* =====================================================
+   ENDEREÇOS
+===================================================== */
+
+.endereco-item{
+
+    display: flex;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    background: rgba(255,255,255,.35);
+
+    padding: 1.5rem 2rem;
+
+    border-radius: 16px;
+
+    margin-bottom: 1.2rem;
+}
+
+.endereco-badge{
+
+    padding: .6rem 1.4rem;
+
+    background: var(--cor-primaria);
+
+    color: white;
+
+    border-radius: 999px;
+
+    font-size: 1.2rem;
+
+    font-weight: 600;
+
+    flex-shrink: 0;
+}
+
+.endereco-dados{
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    gap: .3rem;
+}
+
+.endereco-dados strong{
+
+    font-size: 1.5rem;
+
+    color: var(--cor-texto-forte);
+}
+
+.endereco-dados span{
+
+    font-size: 1.3rem;
+
+    opacity: .7;
+}
+
+.btn-remover{
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(192,57,43,.15);
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.btn-remover:hover{
+
+    background: rgba(192,57,43,.3);
+
+    transform: scale(1.05);
+}
+
+.sem-registros{
+
+    font-size: 1.5rem;
+
+    opacity: .65;
+
+    text-align: center;
+
+    padding: 2rem 0;
+}
+
+.novo-bloco{
+
+    margin-top: 2.5rem;
+
+    padding-top: 2.5rem;
+
+    border-top: 1px solid rgba(91,40,158,.15);
+}
+
+.novo-bloco-title{
+
+    font-size: 1.8rem;
+
+    font-weight: 700;
+
+    color: var(--cor-primaria);
+
+    margin-bottom: 1.8rem;
+}
+
+/* =====================================================
+   FOTO DE PERFIL (ABA)
+===================================================== */
+
+.foto-preview-wrap{
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 2.5rem;
+}
+
+.foto-preview{
+
+    width: 160px;
+    height: 160px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 4px solid rgba(255,255,255,.7);
+
+    box-shadow: 0 8px 20px rgba(91,40,158,.3);
+}
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 900px){
+
+    .row-2{
+
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px){
+
+    .perfil-main{
+
+        padding-top: 120px;
+    }
+
+    .perfil-hero{
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .perfil-tabs{
+
+        justify-content: center;
+    }
+
+    .tab-btn{
+
+        flex: 1;
+
+        text-align: center;
+
+        font-size: 1.3rem;
+
+        padding: 1.1rem 1.5rem;
+    }
+
+    .form-actions{
+
+        justify-content: center;
+    }
+
+    .btn-salvar{
+
+        width: 100%;
+    }
+
+    .endereco-item{
+
+        flex-wrap: wrap;
+    }
+}

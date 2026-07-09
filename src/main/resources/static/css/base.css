@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body{
+
+    font-family: var(--fonte-principal);
+    font-size: 1.6rem;
+    color: var(--cor-texto);
+
+    background:
+        linear-gradient(
+            -45deg,
+            rgba(233,216,166,.6),
+            rgba(140,111,179,.6),
+            rgba(127,159,193,.6),
+            rgba(127,174,196,.6)
+        );
+
+    background-size: 300% 300%;
+    animation:
+        gradient 12s ease infinite;
+}
+
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    transition: .3s ease;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+p{
+    line-height: 1.6;
+}

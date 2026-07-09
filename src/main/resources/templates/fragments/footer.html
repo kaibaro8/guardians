@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<footer th:fragment="footer" class="footer">
+
+    <div class="footer-top">
+
+        <!-- MARCA -->
+        <div class="footer-brand">
+            <div class="footer-brand-logo">
+                <img th:src="@{/img/Logo_Guardias_2.png}" alt="Guardiãs das Águas">
+            </div>
+            <p>
+                Promovendo educação ambiental e protagonismo feminino
+                através da ciência e da preservação dos recursos hídricos.
+            </p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/guardias.aguas" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@leatoxufu4347" target="_blank" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- NAVEGAÇÃO -->
+        <div class="footer-nav">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a th:href="@{/}">Início</a></li>
+                <li><a th:href="@{/inspiracoes-fem}">Inspirações Femininas</a></li>
+                <li><a th:href="@{/blog}">Blog</a></li>
+            </ul>
+        </div>
+
+        <!-- PROJETO -->
+        <div class="footer-nav">
+            <h4>Projeto</h4>
+            <ul>
+                <li><a th:href="@{/propostaDoProjeto}">Proposta do Projeto</a></li>
+                <li><a th:href="@{/eventos}">Eventos</a></li>
+                <li><a th:href="@{/galeria}">Galeria</a></li>
+                <li><a th:href="@{/agenda}">Agenda</a></li>
+                <li><a th:href="@{/#mapa}">Núcleos pelo Brasil</a></li>
+            </ul>
+        </div>
+
+        <!-- CONTATO -->
+        <div class="footer-nav">
+            <h4>Contato</h4>
+            <ul>
+                <li><a th:href="@{/duvidas}">Dúvidas</a></li>
+                <li><a th:href="@{/denuncia}">Denuncie!</a></li>
+                <li><a th:href="@{/contato}">Fale Conosco</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <!-- PATROCINADORES -->
+    <div class="footer-patrocinadores">
+        <span>Apoio</span>
+        <div class="footer-patrocinadores-logos">
+            <img th:src="@{/img/brasao_parceiros.png}" alt="Parceiros">
+        </div>
+    </div>
+
+    <small class="footer-copyright">© 2026 Guardiãs das Águas</small>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscritos nos Eventos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/painel-admin.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/headeradmin :: headeradmin}"></div>
+
+<div class="painel-card">
+    <h2>Inscritos nos Eventos</h2>
+    <p class="painel-subtitle">Logado como <strong sec:authentication="name"></strong></p>
+
+    <p class="section-title">Filtrar Inscritos</p>
+    <form th:action="@{/operador/inscritos}" method="get" class="filtro-form">
+        <label class="label-select">Evento
+            <select name="eventoId">
+                <option value="">— Selecione um evento —</option>
+                <option th:each="ev : ${eventos}" th:value="${ev.id}" th:text="${ev.titulo} + ' (' + ${ev.data} + ')'" th:selected="${eventoSelecionado != null && eventoSelecionado == ev.id}"></option>
+            </select>
+        </label>
+        <label class="label-select">Exibir
+            <select name="limite" id="selectLimite" class="select-limite">
+                <option th:each="op : ${sizeOptions}" th:value="${op}" th:text="${op}" th:selected="${op == limite}"></option>
+            </select>
+        </label>
+        <label class="label-select">Ordenar por
+            <select name="sortBy" class="select-limite">
+                <option value="nome"  th:selected="${sortBy == 'nome'}">Nome</option>
+                <option value="email" th:selected="${sortBy == 'email'}">E-mail</option>
+            </select>
+        </label>
+        <label class="label-select">Direção
+            <select name="dir" class="select-limite">
+                <option value="asc"  th:selected="${dir == 'asc'}">A → Z</option>
+                <option value="desc" th:selected="${dir == 'desc'}">Z → A</option>
+            </select>
+        </label>
+        <div style="display:flex; gap:1rem; align-items:flex-end;">
+            <button type="submit" class="btn-filtrar">Filtrar</button>
+            <a th:href="@{/operador/inscritos}" class="btn-limpar">Limpar</a>
+        </div>
+    </form>
+
+    <hr class="divider">
+
+    <div th:if="${eventoSelecionado == null}" class="aviso-filtro">Selecione um evento acima para ver os inscritos.</div>
+
+    <div th:unless="${eventoSelecionado == null}">
+        <p class="section-title">Inscritos no Evento</p>
+        <div th:if="${#lists.isEmpty(inscritos)}" class="empty-msg">Nenhum inscrito neste evento.</div>
+        <div th:unless="${#lists.isEmpty(inscritos)}" class="eventos-table-wrap">
+        <table class="eventos-table">
+            <thead>
+                <tr>
+                    <th><a th:href="@{/operador/inscritos(eventoId=${eventoSelecionado},limite=${limite},sortBy='nome',dir=${sortBy=='nome' and dir=='asc'?'desc':'asc'})}">Nome <span th:if="${sortBy=='nome'}" th:text="${dir=='asc'?'▲':'▼'}"></span></a></th>
+                    <th><a th:href="@{/operador/inscritos(eventoId=${eventoSelecionado},limite=${limite},sortBy='email',dir=${sortBy=='email' and dir=='asc'?'desc':'asc'})}">E-mail <span th:if="${sortBy=='email'}" th:text="${dir=='asc'?'▲':'▼'}"></span></a></th>
+                    <th style="text-align:center;">Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="u : ${inscritos}">
+                    <td th:text="${u.nome}"></td>
+                    <td th:text="${u.email}"></td>
+                    <td style="text-align:center;">
+                        <a th:href="@{/operador/inscritos/remover(usuarioId=${u.id},eventoId=${eventoSelecionado},limite=${limite},sortBy=${sortBy},dir=${dir})}" class="btn-excluir" onclick="return confirm('Confirma remoção?')">Remover</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="painel-footer"><a th:href="@{/}">← Voltar para o Início</a></div>
+</div>
+
+<script type="module" th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/inscritos.js}"></script>
+
+</body>
+</html>

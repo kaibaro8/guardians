@@ -1,0 +1,289 @@
+/* ================================= */
+/* FOOTER */
+/* ================================= */
+
+.footer{
+    background: rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+    padding: 3.5rem 2rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+/* ================================= */
+/* TOPO */
+/* ================================= */
+
+.footer-top{
+    width: 100%;
+    max-width: 1200px;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    gap: 3rem;
+}
+
+
+/* ================================= */
+/* MARCA */
+/* ================================= */
+
+.footer-brand{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5rem;
+}
+
+.footer-brand-logo img{
+
+    width: 250px;
+
+    opacity: .85;
+
+    transition: .3s ease;
+
+    cursor: pointer;
+}
+
+.footer-brand-logo img:hover{
+
+    opacity: 1;
+
+    transform: scale(1.05);
+}
+
+.footer-brand-logo span{
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    color: var(--cor-texto-forte);
+}
+
+.footer-brand p{
+
+    color: rgba(43,17,80,.75);
+
+    line-height: 1.8;
+
+    max-width: 500px;
+}
+
+
+/* ================================= */
+/* REDES */
+/* ================================= */
+
+.footer-social{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-social a{
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+   color: #8e6db5;
+
+    font-size: 2rem;
+
+    transition: .3s ease;
+}
+
+.footer-social a:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.08);
+
+    background: rgba(255,255,255,0.20);
+
+    box-shadow:
+        0 8px 20px rgba(91,40,158,.15);
+}
+
+
+/* ================================= */
+/* NAVEGAÇÃO */
+/* ================================= */
+
+.footer-nav h4{
+
+    color: var(--cor-texto-forte);
+
+    margin-bottom: 1.2rem;
+}
+
+.footer-nav ul{
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .8rem;
+}
+
+.footer-nav a{
+
+    color: rgba(43,17,80,.8);
+
+    font-weight: 500;
+
+    position: relative;
+}
+
+.footer-nav a::after{
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -5px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--cor-primaria);
+
+    transition: .3s;
+}
+
+.footer-nav a:hover::after{
+
+    width: 100%;
+}
+
+/* ================================= */
+/* DIVISOR */
+/* ================================= */
+
+.footer-divider{
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    height: 1px;
+
+    background:
+
+        rgba(255, 255, 255, 0.166);
+}
+
+
+/* ================================= */
+/* APOIO */
+/* ================================= */
+
+.footer-patrocinadores{
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1.2rem;
+}
+
+.footer-patrocinadores span{
+
+    font-size: 1.3rem;
+
+    color: rgba(43,17,80,.6);
+
+    text-transform: uppercase;
+
+    letter-spacing: .15rem;
+}
+
+.footer-patrocinadores-logos{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 4rem;
+}
+
+.footer-patrocinadores-logos img{
+
+    width:100%;
+    max-width:420px;
+
+    opacity:.85;
+
+    transition:.4s;
+}
+
+.footer-patrocinadores-logos img:hover{
+
+    transform:scale(1.03);
+}
+
+/* ================================= */
+/* COPYRIGHT */
+/* ================================= */
+
+.footer-copyright{
+
+    color:
+
+        rgba(43,17,80,.7);
+
+    font-size: 1.4rem;
+}
+
+
+/* ================================= */
+/* RESPONSIVO */
+/* ================================= */
+
+@media (max-width:768px){
+
+    .footer-top{
+
+        grid-template-columns: 1fr;
+
+        gap: 3rem;
+    }
+
+}

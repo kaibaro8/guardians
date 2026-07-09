@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco — Guardiãs das Águas</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="painel-admin"
+     sec:authorize="isAuthenticated() and hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<main>
+
+    <section class="ajuda-hero">
+        <h1>Fale Conosco</h1>
+        <p>
+            Tem uma sugestão, opinião ou quer saber mais sobre o projeto?
+            Preencha o formulário abaixo e entraremos em contato com você.
+        </p>
+    </section>
+
+    <section class="ajuda-secao">
+
+        <!-- MENSAGEM DE SUCESSO -->
+        <div th:if="${sucesso}" class="form-feedback visivel">
+            <i class="fa-solid fa-circle-check"></i>
+            <span th:text="${sucesso}"></span>
+        </div>
+
+        <!-- MENSAGEM DE ERRO -->
+        <div th:if="${erro}" class="form-feedback form-feedback-erro visivel">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <span th:text="${erro}"></span>
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <form class="form-contato"
+              th:action="@{/contato/enviar}"
+              th:object="${contatoDTO}"
+              method="post">
+
+            <div class="form-linha">
+                <div class="form-campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" th:field="*{nome}"
+                           placeholder="Seu nome" required>
+                    <small th:if="${#fields.hasErrors('nome')}"
+                           th:errors="*{nome}" class="form-erro"></small>
+                </div>
+
+                <div class="form-campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" th:field="*{email}"
+                           placeholder="seu@email.com" required>
+                    <small th:if="${#fields.hasErrors('email')}"
+                           th:errors="*{email}" class="form-erro"></small>
+                </div>
+            </div>
+
+            <div class="form-linha">
+                <div class="form-campo">
+                    <label for="telefone">Telefone (opcional)</label>
+                    <input type="tel" id="telefone" th:field="*{telefone}"
+                           placeholder="(34) 99999-9999">
+                </div>
+
+                <div class="form-campo">
+                    <label for="assunto">Assunto</label>
+                    <select id="assunto" th:field="*{assunto}" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="duvida">Dúvida sobre o projeto</option>
+                        <option value="participar">Quero participar</option>
+                        <option value="opiniao">Opinião / Sugestão</option>
+                        <option value="parceria">Proposta de parceria</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-campo">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" th:field="*{mensagem}"
+                          placeholder="Escreva sua mensagem aqui..." required></textarea>
+                <small>Conte um pouco mais sobre o que você gostaria de compartilhar com a gente.</small>
+                <small th:if="${#fields.hasErrors('mensagem')}"
+                       th:errors="*{mensagem}" class="form-erro"></small>
+            </div>
+
+            <button type="submit" class="btn-enviar">Enviar mensagem</button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script type="module" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

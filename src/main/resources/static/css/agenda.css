@@ -1,0 +1,332 @@
+/* ================================= */
+/* HERO AGENDA */
+/* ================================= */
+
+.agenda-hero {
+    text-align: center;
+    padding: 8rem 2rem 2rem;
+}
+
+.agenda-hero h1 {
+    font-size: 3.8rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1.2rem;
+}
+
+.agenda-hero p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* LAYOUT */
+/* ================================= */
+
+.agenda-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 3rem;
+
+    max-width: 1100px;
+    margin: 4rem auto 6rem;
+    padding: 0 2rem;
+    align-items: start;
+}
+
+/* ================================= */
+/* CALENDÁRIO */
+/* ================================= */
+
+.agenda-calendario {
+    padding: 2.5rem;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.25);
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+
+.agenda-mes-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.agenda-mes-nav h3 {
+    font-size: 1.7rem;
+    color: var(--cor-texto-forte);
+    text-align: center;
+}
+
+.agenda-nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.3);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.25);
+    backdrop-filter: blur(12px);
+    color: var(--cor-primaria);
+
+    transition: .25s ease;
+}
+
+.agenda-nav-btn:hover {
+    background: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.agenda-dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    margin-bottom: .8rem;
+}
+
+.agenda-grade {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: .5rem;
+}
+
+.agenda-dia {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.3rem;
+    color: var(--cor-texto);
+    background: transparent;
+
+    transition: .25s ease;
+}
+
+.agenda-dia.vazio {
+    cursor: default;
+    pointer-events: none;
+}
+
+.agenda-dia:not(.vazio):hover {
+    background: rgba(255,255,255,.3);
+}
+
+.agenda-dia.tem-evento {
+    font-weight: 700;
+    color: var(--cor-primaria);
+    box-shadow: inset 0 -3px 0 var(--cor-primaria);
+}
+
+.agenda-dia.selecionado {
+    background: var(--cor-primaria);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(91,40,158,.35);
+}
+
+/* ================================= */
+/* DETALHES DO DIA */
+/* ================================= */
+
+.agenda-detalhes {
+    padding: 2.5rem 3rem;
+    border-radius: 30px;
+    min-height: 320px;
+
+    background: rgba(255,255,255,.16);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+
+.agenda-detalhes h3 {
+    font-size: 2rem;
+    color: var(--cor-texto-forte);
+    margin-bottom: 2rem;
+}
+
+.agenda-vazio {
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+    opacity: .8;
+}
+
+.agenda-eventos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.agenda-evento-card {
+    padding: 1.8rem 2rem;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.3);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.25);
+    border-left: 4px solid var(--cor-primaria);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.agenda-evento-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(91,40,158,.18);
+}
+
+.agenda-evento-horario {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    margin-bottom: .5rem;
+}
+
+.agenda-evento-card h4 {
+    font-size: 1.7rem;
+    color: var(--cor-texto-forte);
+    margin-bottom: .5rem;
+}
+
+.agenda-evento-card p {
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+/* ================================= */
+/* BOTÕES DE INSCRIÇÃO               */
+/* ================================= */
+
+.btn-insc {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+
+    margin-top: 1.2rem;
+    padding: 1rem 2rem;
+
+    border: none;
+    border-radius: 999px;
+
+    font-family: var(--fonte-principal);
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.btn-inscrever {
+    background: var(--cor-primaria);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(91,40,158,.3);
+}
+
+.btn-inscrever:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(91,40,158,.4);
+    opacity: 1;
+}
+
+.btn-cancelar {
+    background: rgba(239,68,68,.12);
+    color: #c53030;
+    border: 1px solid rgba(239,68,68,.3);
+}
+
+.btn-cancelar:hover {
+    background: rgba(239,68,68,.22);
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+/* ================================= */
+/* CARD DO EVENTO                    */
+/* ================================= */
+
+.agenda-evento-card {
+    padding: 1.8rem 2rem;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.3);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.25);
+    border-left: 4px solid var(--cor-primaria);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+    transition: transform .25s ease;
+}
+
+.agenda-evento-card:hover {
+    transform: translateY(-3px);
+}
+
+.agenda-evento-card.is-member {
+    border-left-color: #f59e0b;
+}
+
+.agenda-evento-card h4 {
+    font-size: 1.7rem;
+    color: var(--cor-texto-forte);
+    margin-bottom: .5rem;
+}
+
+.agenda-evento-card p {
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+/* ================================= */
+/* CONFIRMAÇÃO DE INSCRIÇÃO          */
+/* ================================= */
+
+.agenda-confirmacao {
+    padding: 1.5rem 2rem;
+    border-radius: 14px;
+
+    background: rgba(94,224,124,.15);
+    color: #1f7a3d;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+@media (max-width: 850px) {
+
+    .agenda-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,271 @@
+/* ================================= */
+/* HERO GENÉRICO (Proposta / Inspirações / Núcleos) */
+/* ================================= */
+
+.projeto-geral-hero {
+    text-align: center;
+    padding: 8rem 2rem 2rem;
+}
+
+.projeto-geral-hero h1 {
+    font-size: 3.8rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1.2rem;
+}
+
+.projeto-geral-hero p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* TEXTO DO OBJETIVO */
+/* ================================= */
+
+.proposta-objetivo {
+    max-width: 900px;
+    margin: 2rem auto 5rem;
+    padding: 3rem 3.5rem;
+
+    background: rgba(255,255,255,.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 30px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+
+.proposta-objetivo p {
+    font-size: 1.6rem;
+    color: var(--cor-texto);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.proposta-objetivo p:last-child {
+    margin-bottom: 0;
+}
+
+/* ================================= */
+/* SEÇÃO GENÉRICA (título + subtítulo) */
+/* ================================= */
+
+.secao-titulo {
+    text-align: center;
+    padding: 2rem 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.secao-titulo h2 {
+    font-size: 3.2rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1rem;
+}
+
+.secao-titulo p {
+    font-size: 1.7rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* CARROSSEL GENÉRICO (Equipe / Inspirações) */
+/* ================================= */
+
+.carrossel-genérico-wrap {
+    position: relative;
+    max-width: 1100px;
+    margin: 3rem auto 6rem;
+    padding: 0 2rem;
+}
+
+.carrossel-trilho {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 0;
+
+    border-radius: 30px;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carrossel-trilho::-webkit-scrollbar {
+    display: none;
+}
+
+.carrossel-trilho .slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+}
+
+/* Card de pessoa (equipe ou inspiração) dentro do slide */
+
+.pessoa-card {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    padding: 3rem;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.25);
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+
+.pessoa-card-foto {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 25px rgba(91,40,158,.3);
+}
+
+.pessoa-card-info h3 {
+    font-size: 2.2rem;
+    color: var(--cor-texto-forte);
+    margin-bottom: .3rem;
+}
+
+.pessoa-card-info span {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--cor-primaria);
+    padding: .3rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.pessoa-card-info p {
+    font-size: 1.45rem;
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* ================================= */
+/* CONTROLES DO CARROSSEL */
+/* ================================= */
+
+.carrossel-indicadores {
+    display: flex;
+    justify-content: center;
+    gap: .8rem;
+    margin-top: 2rem;
+}
+
+.indicador {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(91,40,158,.3);
+    transition: background .25s, width .25s;
+    border: none;
+}
+
+.indicador.ativo {
+    width: 32px;
+    border-radius: 50px;
+    background: var(--cor-primaria);
+    transform: none;
+}
+
+.carrossel-seta {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--cor-primaria);
+    color: #fff;
+    font-size: 1.4rem;
+
+    box-shadow: 0 4px 15px rgba(91,40,158,.35);
+    transition: background .2s, transform .15s;
+}
+
+.carrossel-seta:hover {
+    background: var(--cor-texto-forte);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carrossel-seta-anterior {
+    left: -10px;
+}
+
+.carrossel-seta-proximo {
+    right: -10px;
+}
+
+@media (max-width: 700px) {
+
+    .pessoa-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .carrossel-seta {
+        display: none;
+    }
+}
+
+/* ================================= */
+/* MAPA DE NÚCLEOS */
+/* ================================= */
+
+.mapa-nucleos-secao {
+    padding: 2rem 2% 6rem;
+    text-align: center;
+}
+
+#mapa-nucleos {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.popup-nucleo {
+    font-family: var(--fonte-principal);
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.popup-nucleo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: .5rem;
+    color: var(--cor-primaria);
+    font-weight: 600;
+}

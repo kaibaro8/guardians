@@ -1,0 +1,417 @@
+/* ================================= */
+/* HERO CONTATO/AJUDA */
+/* ================================= */
+
+.ajuda-hero {
+    text-align: center;
+    padding: 8rem 2rem 3rem;
+}
+
+.ajuda-hero h1 {
+    font-size: 3.8rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1.2rem;
+}
+
+.ajuda-hero p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* LAYOUT GERAL */
+/* ================================= */
+
+.ajuda-secao {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.ajuda-secao h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1rem;
+}
+
+.ajuda-secao > p.subtitulo {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 4rem;
+    font-size: 1.6rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* FAQ - ACCORDION */
+/* ================================= */
+
+.faq-lista {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: .3s ease;
+}
+
+.faq-pergunta {
+    width: 100%;
+    padding: 2rem 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-family: var(--fonte-principal);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--cor-texto-forte);
+    text-align: left;
+}
+
+.faq-pergunta i {
+    color: var(--cor-primaria);
+    transition: transform .3s ease;
+    flex-shrink: 0;
+}
+
+.faq-item.ativo .faq-pergunta i {
+    transform: rotate(180deg);
+}
+
+.faq-resposta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+}
+
+.faq-resposta p {
+    padding: 0 2.5rem 2rem;
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* ================================= */
+/* BOT / CHAT */
+/* ================================= */
+
+.chat-bot {
+    max-width: 480px;
+    margin: 0 auto;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 25px;
+    overflow: hidden;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+
+    display: flex;
+    flex-direction: column;
+    height: 520px;
+}
+
+.chat-bot-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+    padding: 1.8rem 2rem;
+    background: var(--cor-primaria);
+    color: #fff;
+}
+
+.chat-bot-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.chat-bot-header h3 {
+    font-size: 1.7rem;
+}
+
+.chat-bot-header span {
+    font-size: 1.2rem;
+    opacity: .85;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.chat-bot-header span::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #5ee07c;
+}
+
+.chat-bot-mensagens {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.msg {
+    max-width: 80%;
+    padding: 1.2rem 1.6rem;
+    border-radius: 18px;
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+.msg-bot {
+    align-self: flex-start;
+    background: rgba(91,40,158,.12);
+    color: var(--cor-texto-forte);
+    border-bottom-left-radius: 4px;
+}
+
+.msg-usuario {
+    align-self: flex-end;
+    background: var(--cor-primaria);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-bot-sugestoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    padding: 0 2rem 1.5rem;
+}
+
+.chat-bot-sugestoes button {
+    padding: .7rem 1.4rem;
+    border-radius: 999px;
+
+    background: rgba(91,40,158,.1);
+    border: 1px solid rgba(91,40,158,.25);
+    color: var(--cor-primaria);
+
+    font-size: 1.25rem;
+    font-family: var(--fonte-principal);
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.chat-bot-sugestoes button:hover {
+    background: var(--cor-primaria);
+    color: #fff;
+}
+
+.chat-bot-input {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid rgba(255,255,255,.2);
+}
+
+.chat-bot-input input {
+    flex: 1;
+    padding: 1.1rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(91,40,158,.2);
+
+    font-family: var(--fonte-principal);
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+
+    background: rgba(255,255,255,.6);
+}
+
+.chat-bot-input input:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+}
+
+.chat-bot-input button {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+
+    background: var(--cor-primaria);
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: .3s ease;
+}
+
+.chat-bot-input button:hover {
+    transform: scale(1.08);
+}
+
+/* ================================= */
+/* FORMULÁRIO FALE CONOSCO */
+/* ================================= */
+
+.form-contato {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3.5rem;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 30px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.form-campo {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.form-campo label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cor-texto-forte);
+}
+
+.form-campo input,
+.form-campo select,
+.form-campo textarea {
+    padding: 1.2rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid rgba(91,40,158,.2);
+
+    font-family: var(--fonte-principal);
+    font-size: 1.45rem;
+    color: var(--cor-texto);
+
+    background: rgba(255,255,255,.65);
+
+    transition: .25s ease;
+}
+
+.form-campo textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.form-campo input:focus,
+.form-campo select:focus,
+.form-campo textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    background: rgba(255,255,255,.9);
+}
+
+.form-campo small {
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+    opacity: .7;
+}
+
+.btn-enviar {
+    align-self: center;
+    margin-top: 1rem;
+    padding: 1.3rem 4rem;
+    border: none;
+    border-radius: 999px;
+
+    background: var(--cor-primaria);
+    color: #fff;
+
+    font-family: var(--fonte-principal);
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    box-shadow: 0 15px 35px rgba(91,40,158,.3);
+    transition: .3s ease;
+}
+
+.btn-enviar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 45px rgba(91,40,158,.4);
+}
+
+.form-feedback {
+    display: none;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 14px;
+
+    background: rgba(94,224,124,.15);
+    color: #1f7a3d;
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+.form-feedback.visivel {
+    display: block;
+}
+
+/* ================================= */
+/* RESPONSIVO */
+/* ================================= */
+
+@media (max-width: 700px) {
+    .form-linha {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-bot {
+        max-width: 100%;
+        height: 480px;
+    }
+
+    .ajuda-hero h1,
+    .ajuda-secao h2 {
+        font-size: 2.6rem;
+    }
+}
