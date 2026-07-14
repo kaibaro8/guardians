@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardiãs das Águas</title>
+
+    <script>
+        (function(){
+            var t = localStorage.getItem("guardias-tema");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        })();
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/darkmode.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════
+         HEADER
+     ═══════════════════════════════════════ -->
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- ═══════════════════════════════════════
+         BOTÃO — ADMINISTRADOR / OPERADOR
+     ═══════════════════════════════════════ -->
+
+<div class="painel-admin"
+     sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+         CONTEÚDO PRINCIPAL
+     ═══════════════════════════════════════ -->
+
+<main>
+
+    <!-- ══════════════════════
+             HERO
+         ══════════════════════ -->
+
+    <section class="hero-integrado">
+
+        <div class="hero-background">
+            <div class="bg-slide active"></div>
+            <div class="bg-slide"></div>
+            <div class="bg-slide"></div>
+            <div class="overlay-hero"></div>
+        </div>
+
+        <div class="container hero-layout-duplo">
+
+            <!-- COLUNA ESQUERDA -->
+            <div class="hero-coluna-esquerda">
+                <div class="hero-texto">
+
+                    <h2>Guardiãs das Águas</h2>
+
+                    <h3>Meninas pelo Saneamento</h3>
+
+                    <p>
+                        Promovendo o protagonismo feminino na ciência
+                        e a preservação dos recursos hídricos através da
+                        educação e tecnologia.
+                    </p>
+
+                    <a th:href="@{/propostaDoProjeto}" class="btn-cta">
+                        Conheça Nosso Projeto
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA — CARROSSEL DE 3 SLIDES -->
+            <div class="hero-coluna-direita">
+
+                <div class="hero-carrossel-cartao">
+
+                    <div class="hero-carrossel-trilho">
+
+                        <!-- SLIDE 1: SOBRE O PROJETO -->
+                        <div class="hero-slide-direita ativo">
+
+                            <div class="sobre-wrapper">
+                                <div class="sobre-integrado">
+
+                                    <h2>Sobre o Projeto</h2>
+
+                                    <div class="texto">
+                                        <p>
+                                            O projeto Guardiãs das Águas visa promover
+                                            uma educação de qualidade para meninas das
+                                            regiões Nordeste, Centro-Oeste, Sudeste e
+                                            Sul do Brasil.
+                                        </p>
+                                        <p>
+                                            Buscamos inserir meninas e mulheres no meio
+                                            científico através de pesquisas sobre
+                                            hidrologia e análise de dados.
+                                        </p>
+                                    </div>
+
+                                    <div class="video-responsivo">
+                                        <iframe
+                                            src="https://www.youtube.com/embed/vuBOl8itz6w?si=Htpn3RI4LRjhBOsA"
+                                            title="Projeto Guardiãs das Águas"
+                                            frameborder="0"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- SLIDE 2: CONVITE PRO BLOG -->
+                        <div class="hero-slide-direita">
+
+                            <div class="hero-slide-convite">
+                                <i class="fa-solid fa-newspaper hero-slide-icone"></i>
+                                <h2>Acompanhe no Blog</h2>
+                                <p>
+                                    Histórias, bastidores e conquistas de cada núcleo,
+                                    contadas por quem vive o projeto de perto.
+                                </p>
+                                <a th:href="@{/blog}" class="btn-cta">
+                                    Ver o Blog
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <!-- SLIDE 3: CONVITE PRA FAZER PARTE -->
+                        <div class="hero-slide-direita">
+
+                            <div class="hero-slide-convite">
+                                <i class="fa-solid fa-hand-holding-heart hero-slide-icone"></i>
+                                <h2>Faça Parte</h2>
+                                <p>
+                                    Quer se envolver com a causa? Junte-se às Guardiãs
+                                    das Águas e ajude a levar educação ambiental para
+                                    mais comunidades pelo Brasil.
+                                </p>
+                                <a th:href="@{/contato}" class="btn-cta">
+                                    Quero Participar
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SETA -->
+                    <button type="button" class="hero-carrossel-seta" aria-label="Próximo slide">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                    <!-- BOLINHAS -->
+                    <div class="hero-carrossel-indicadores">
+                        <button type="button" class="hero-carrossel-indicador ativo" data-slide="0" aria-label="Slide 1"></button>
+                        <button type="button" class="hero-carrossel-indicador" data-slide="1" aria-label="Slide 2"></button>
+                        <button type="button" class="hero-carrossel-indicador" data-slide="2" aria-label="Slide 3"></button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ══════════════════════
+             TÍTULO DOS CARDS
+         ══════════════════════ -->
+
+    <section class="cards-titulo">
+        <h2>Nossa Essência</h2>
+        <p>Os valores, objetivos e sonhos que movem o projeto Guardiãs das Águas.</p>
+    </section>
+
+    <!-- ══════════════════════
+             CARDS
+         ══════════════════════ -->
+
+    <section class="card-container">
+
+        <div class="card-wrap">
+            <div class="card">
+                <div class="card-bg"></div>
+                <div class="card-info">
+                    <h2>Nossa Missão</h2>
+                    <p>
+                        Empoderar mulheres na ciência e estimular a
+                        participação ativa das comunidades locais na
+                        preservação dos recursos hídricos.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-wrap">
+            <div class="card">
+                <div class="card-bg"></div>
+                <div class="card-info">
+                    <h2>Nossa Visão</h2>
+                    <p>
+                        Ser referência nacional na formação de jovens
+                        lideranças femininas na Engenharia Ambiental.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-wrap">
+            <div class="card">
+                <div class="card-bg"></div>
+                <div class="card-info">
+                    <h2>Nossos Valores</h2>
+                    <ul>
+                        <li><strong>Protagonismo Feminino:</strong> Lugar de mulher é na ciência.</li>
+                        <li><strong>Sustentabilidade:</strong> Cuidar das águas hoje para garantir o amanhã.</li>
+                        <li><strong>Educação Cidadã:</strong> O conhecimento transforma a comunidade.</li>
+                        <li><strong>Inovação:</strong> Tecnologia a serviço da natureza.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ══════════════════════
+             MAPA — SVG do Brasil + filtro por ano
+         ══════════════════════ -->
+
+    <section class="mapa has-shown" id="mapa">
+        <div class="container">
+            <h2>Onde estamos</h2>
+            <p>
+                Nosso projeto está presente em diversas regiões do Brasil
+                promovendo educação ambiental e protagonismo feminino.
+            </p>
+
+            <div class="mapa-ano-filtro" id="mapa-ano-filtro"></div>
+
+            <section class="mapa-brasil-secao">
+                <div class="mapa-brasil-wrap">
+                    <div id="mapa-brasil"></div>
+                </div>
+                <div class="mapa-brasil-cards" id="mapa-brasil-cards"></div>
+            </section>
+        </div>
+    </section>
+
+    <!-- ══════════════════════
+             FAÇA PARTE
+         ══════════════════════ -->
+
+    <section class="faca-parte">
+
+        <div class="faca-parte-glow"></div>
+
+        <div class="container faca-parte-conteudo">
+
+            <div class="faca-parte-marca">
+                <img th:src="@{/img/logos/Logo_Guardias.png}" alt="Guardiãs das Águas" class="faca-parte-marca-logo">
+                <span class="faca-parte-marca-texto">Guardiãs das Águas</span>
+            </div>
+
+            <h2>Vem ser uma Guardiã!</h2>
+
+            <p>
+                Escolha como você quer fazer parte dessa causa. Cada gota conta —
+                e a sua pode transformar uma comunidade inteira.
+            </p>
+
+            <div class="faca-parte-opcoes">
+
+                <a th:href="@{/contato}" class="faca-parte-card">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <h3>Seja Voluntária</h3>
+                    <p>Participe das atividades e oficinas com meninas e mulheres do seu núcleo.</p>
+                    <span class="faca-parte-card-cta">Quero ser voluntária <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a th:href="@{/contato}" class="faca-parte-card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h3>Seja Parceira</h3>
+                    <p>Sua instituição pode apoiar o projeto com estrutura, recursos ou conhecimento.</p>
+                    <span class="faca-parte-card-cta">Quero ser parceira <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a th:href="@{/contato}" class="faca-parte-card">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <h3>Apoie o Projeto</h3>
+                    <p>Ajude a levar educação ambiental e ciência para mais meninas pelo Brasil.</p>
+                    <span class="faca-parte-card-cta">Quero apoiar <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+    <!-- FOOTER -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <!-- JS -->
+    <script type="module" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

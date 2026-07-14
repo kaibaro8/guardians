@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dúvidas — Guardiãs das Águas</title>
+
+    
+    <script>
+        (function(){
+            var t = localStorage.getItem("guardias-tema");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        })();
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/darkmode.css}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="painel-admin"
+     sec:authorize="isAuthenticated() and hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<main>
+
+    <section class="ajuda-hero">
+        <h1>Dúvidas</h1>
+        <p>
+            Reunimos as perguntas mais frequentes sobre o projeto Guardiãs
+            das Águas. Não encontrou o que procurava? Converse com nossa assistente virtual.
+        </p>
+    </section>
+
+    <section class="ajuda-secao">
+        <h2>Perguntas Frequentes</h2>
+        <p class="subtitulo">Clique em uma pergunta para ver a resposta</p>
+
+        <div class="faq-lista">
+
+            <div class="faq-item">
+                <button class="faq-pergunta">
+                    O que é o projeto Guardiãs das Águas?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-resposta">
+                    <p>É uma iniciativa que incentiva o protagonismo feminino na ciência
+                    e promove a educação ambiental voltada ao saneamento básico e à
+                    preservação dos recursos hídricos.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pergunta">
+                    Como posso participar do projeto?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-resposta">
+                    <p>Você pode participar como voluntária, apoiadora ou parceira institucional.
+                    Acesse a página "Faça Parte" no menu ou entre em contato pelo formulário
+                    da página Fale Conosco.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pergunta">
+                    O projeto tem núcleos em outras cidades?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-resposta">
+                    <p>Sim! Temos núcleos espalhados pelo Brasil. Confira a lista completa
+                    na página "Núcleos pelo Brasil", no menu Projeto.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pergunta">
+                    Como faço para denunciar um problema ambiental?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-resposta">
+                    <p>Acesse a página "Denuncie!" no menu Contato. Lá você encontra os
+                    telefones oficiais do IBAMA, Disque Denúncia e da Patrulha Ambiental
+                    de Uberlândia.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pergunta">
+                    As atividades do projeto têm custo?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-resposta">
+                    <p>Não. Todas as atividades educativas e eventos promovidos pelo
+                    Guardiãs das Águas são gratuitos e abertos à comunidade.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="ajuda-secao">
+        <h2>Ainda com dúvidas?</h2>
+        <p class="subtitulo">Converse com a nossa assistente virtual</p>
+
+        <div class="chat-bot">
+
+            <div class="chat-bot-header">
+                <div class="chat-bot-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h3>Gotinha</h3>
+                    <span>Online agora</span>
+                </div>
+            </div>
+
+            <div class="chat-bot-mensagens">
+                <div class="msg msg-bot">
+                    Oi! Eu sou a Gotinha 💧 Posso te ajudar com dúvidas sobre o
+                    projeto Guardiãs das Águas. O que você quer saber?
+                </div>
+            </div>
+
+            <div class="chat-bot-sugestoes">
+                <button type="button">Como participar?</button>
+                <button type="button">Onde tem núcleos?</button>
+                <button type="button">Como denunciar?</button>
+            </div>
+
+            <div class="chat-bot-input">
+                <input type="text" placeholder="Digite sua pergunta..." disabled>
+                <button type="button" disabled>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script type="module" th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/duvidas.js}"></script>
+
+</body>
+</html>

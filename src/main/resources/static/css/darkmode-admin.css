@@ -1,0 +1,111 @@
+/* ======================================================
+   MODO ESCURO — área de administrador / operador
+   Depende de: variaveis.css + painel-admin.css
+   ====================================================== */
+
+/* ── FUNDO DA PÁGINA ── */
+[data-theme="dark"] body {
+    background: linear-gradient(
+        -45deg,
+        rgba(38,27,66,1),
+        rgba(60,26,105,1),
+        rgba(28,23,48,1),
+        rgba(45,36,82,1)
+    );
+    background-size: 300% 300%;
+}
+
+/* ── CARDS PRINCIPAIS (painel-card, modal-box, admin-card) ── */
+[data-theme="dark"] .painel-card,
+[data-theme="dark"] .modal-box,
+[data-theme="dark"] .admin-card {
+    background-color: rgba(30,24,50,.65);
+    border-top-color: rgba(255,255,255,.16);
+}
+
+/* ── CAMPOS DE FORMULÁRIO ── */
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .title-search-bar input[type="text"],
+[data-theme="dark"] .select-small,
+[data-theme="dark"] .label-select select,
+[data-theme="dark"] .select-limite,
+[data-theme="dark"] .modal-box select,
+[data-theme="dark"] .periodo-custom input[type="date"],
+[data-theme="dark"] .detalhe-form-resposta textarea {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.2);
+    color: var(--cor-texto-forte);
+    color-scheme: dark;
+}
+
+[data-theme="dark"] .form-group select option,
+[data-theme="dark"] .label-select select option,
+[data-theme="dark"] .select-limite option,
+[data-theme="dark"] .modal-box select option {
+    background-color: #2b1c48;
+    color: var(--cor-texto-forte);
+}
+[data-theme="dark"] .title-search-bar {
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.12);
+}
+
+/* ── TABELA ── */
+[data-theme="dark"] .eventos-table thead tr {
+    background: rgba(255,255,255,.08);
+    border-bottom-color: rgba(255,255,255,.16);
+}
+
+[data-theme="dark"] .eventos-table tbody tr {
+    border-bottom-color: rgba(255,255,255,.08);
+}
+
+[data-theme="dark"] .eventos-table tbody tr:hover {
+    background: rgba(255,255,255,.06);
+}
+
+[data-theme="dark"] .eventos-table tbody tr.row-nova {
+    background: rgba(166,124,234,.12);
+}
+
+/* ── CARDS DE RESUMO / NÚMEROS ── */
+[data-theme="dark"] .card-numero,
+[data-theme="dark"] .detalhe-meta,
+[data-theme="dark"] .detalhe-mensagem,
+[data-theme="dark"] .detalhe-resposta,
+[data-theme="dark"] .detalhe-form-resposta {
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.12);
+}
+
+/* ── BOTÕES "FANTASMA" (fundo claro no modo claro) ── */
+[data-theme="dark"] .btn-limpar,
+[data-theme="dark"] .btn-search-clear,
+[data-theme="dark"] .btn-modal-cancelar,
+[data-theme="dark"] .btn-page,
+[data-theme="dark"] .btn-periodo,
+[data-theme="dark"] .btn-alterar {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.22);
+}
+
+[data-theme="dark"] .btn-page:hover,
+[data-theme="dark"] .btn-page.active,
+[data-theme="dark"] .btn-periodo:hover,
+[data-theme="dark"] .btn-periodo.active {
+    background: var(--cor-primaria);
+    border-color: transparent;
+}
+
+/* ── DIVISOR ── */
+[data-theme="dark"] .divider {
+    border-top-color: rgba(255,255,255,.12);
+}
+
+/* ── SIDEBAR (já é roxa sólida, só ajusta bordas sutis) ── */
+[data-theme="dark"] .sidebar-header,
+[data-theme="dark"] .sidebar-footer {
+    border-color: rgba(255,255,255,.14);
+}

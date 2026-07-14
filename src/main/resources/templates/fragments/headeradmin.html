@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<header th:fragment="headeradmin">
+    <div class="navbar">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/img/logos/Logo_Guardias.png}" alt="Guardiãs das Águas">
+            </a>
+            <h1>Guardiãs das Águas</h1>
+        </div>
+
+        <!-- MENU DESKTOP -->
+        <nav class="menu-desktop">
+
+            <div class="dropdown" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+                <a href="#">Operação <i class="fa-solid fa-chevron-down seta-dropdown"></i></a>
+                <div class="dropdown-conteudo">
+                    <a th:href="@{/operador/painel}">🗓️ Agenda (Cadastrar Evento)</a>
+                    <a th:href="@{/operador/inscritos}">👥 Inscritos na Agenda</a>
+                    <a th:href="@{/operador/painel-evento}">📸 Publicar Evento (Fotos)</a>
+                    <a th:href="@{/operador/painel-blog}">📝 Publicações do Blog</a>
+                    <a th:href="@{/operador/contatos}">✉ Mensagens Recebidas</a>
+                    <a th:href="@{/admin/visitantes}">📊 Relatório de Visitantes</a>
+                </div>
+            </div>
+
+            <div class="dropdown" sec:authorize="hasAuthority('ROLE_ADMIN')">
+                <a href="#">Administração <i class="fa-solid fa-chevron-down seta-dropdown"></i></a>
+                <div class="dropdown-conteudo">
+                    <a th:href="@{/admin/usuarios}">👤 Cadastrar Usuário</a>
+                    <a th:href="@{/admin/listar-usuarios}">📋 Listar Usuários</a>
+                </div>
+            </div>
+
+            <a th:href="@{/}">Início</a>
+            <a th:href="@{/meu-perfil}">Perfil</a>
+
+        </nav>
+
+        <!-- BOTÃO SAIR (DESKTOP) -->
+        <form th:action="@{/logout}" method="post" class="form-logout-nav">
+            <button type="submit" class="btn-nav-sair" title="Sair do sistema">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </form>
+
+        <!-- MODO ESCURO -->
+        <button type="button" class="tema-toggle" aria-label="Alternar modo escuro">
+            <i class="fa-solid fa-sun tema-toggle-sol"></i>
+            <i class="fa-solid fa-moon tema-toggle-lua"></i>
+        </button>
+
+        <!-- HAMBÚRGUER MOBILE -->
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <!-- MENU MOBILE -->
+    <div class="menu-mobile">
+        <button class="fechar-menu">✕</button>
+        <nav>
+
+            <div sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+                <details>
+                    <summary>Operação <i class="fa-solid fa-chevron-down seta-dropdown"></i></summary>
+                    <div class="submenu-mobile">
+                        <a th:href="@{/operador/painel}">🗓️ Agenda (Cadastrar Evento)</a>
+                        <a th:href="@{/operador/inscritos}">👥 Inscritos na Agenda</a>
+                        <a th:href="@{/operador/painel-evento}">📸 Publicar Evento </a>
+                        <a th:href="@{/operador/painel-blog}">📝 Publicações do Blog</a>
+                        <a th:href="@{/operador/contatos}">✉ Mensagens Recebidas</a>
+                        <a th:href="@{/admin/visitantes}">📊 Relatório de Visitantes</a>
+                    </div>
+                </details>
+            </div>
+
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                <details>
+                    <summary>Administração <i class="fa-solid fa-chevron-down seta-dropdown"></i></summary>
+                    <div class="submenu-mobile">
+                        <a th:href="@{/admin/usuarios}">👤 Cadastrar Usuário</a>
+                        <a th:href="@{/admin/listar-usuarios}">📋 Listar Usuários</a>
+                    </div>
+                </details>
+            </div>
+
+            <a th:href="@{/}">Início</a>
+            <a th:href="@{/meu-perfil}">Perfil</a>
+
+            <!-- BOTÃO SAIR (MOBILE) -->
+            <form th:action="@{/logout}" method="post" class="form-logout-mobile">
+                <button type="submit" class="btn-mobile-sair">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sair</span>
+                </button>
+            </form>
+
+            <button type="button" class="tema-toggle tema-toggle-mobile" aria-label="Alternar modo escuro">
+                <i class="fa-solid fa-sun tema-toggle-sol"></i>
+                <i class="fa-solid fa-moon tema-toggle-lua"></i>
+                <span class="tema-toggle-label-escuro">Modo escuro</span>
+                <span class="tema-toggle-label-claro">Modo claro</span>
+            </button>
+
+        </nav>
+    </div>
+</header>
+
+</body>
+</html>

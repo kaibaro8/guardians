@@ -1,0 +1,52 @@
+@media (max-width:1024px){
+
+    html{
+        font-size: 58%;
+    }
+}
+
+@media (max-width:800px){
+
+    html{
+        font-size: 56%;
+    }
+}
+
+@media (max-width:480px){
+
+    html{
+        font-size: 54%;
+    }
+}
+
+/* ===================================================================== */
+/* TELAS ULTRA GRANDES / TV 4K (ex.: modelo WA86F, apresentações)         */
+/* Faixa 2560px–3840px: cobre resoluções 4K reportadas em px CSS reais.   */
+/* Não interfere em nada acima: celulares, tablets e monitores comuns    */
+/* continuam usando as regras padrão (>=1025px) ou os breakpoints acima. */
+/* ===================================================================== */
+@media screen and (min-width: 2560px) and (max-width: 3840px) {
+
+    html {
+        /* Reduz a escala base do rem, no mesmo padrão em % já usado acima,
+           para compensar a ampliação física da TV. */
+        font-size: 56%;
+    }
+
+    body {
+        /* "Prende" o site numa largura confortável e centraliza,
+           criando as faixas laterais (letterbox) na TV. */
+        max-width: 1920px;
+        margin: 0 auto;
+        box-shadow: 0 0 40px rgba(0, 0, 0, .15);
+    }
+
+    /* O <header> continua fixed/100% de propósito (fundo/blur precisam
+       cobrir a tela inteira). Só o CONTEÚDO da navbar (logo + menu)
+       é que precisa acompanhar o mesmo recorte de 1920px do body,
+       senão ele fica fixado na viewport e desalinhado com o resto. */
+    .navbar {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+}

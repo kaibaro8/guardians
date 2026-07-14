@@ -1,0 +1,173 @@
+/* ================================= */
+/* TÍTULO DOS CARDS */
+/* ================================= */
+
+.cards-titulo {
+    text-align: center;
+    padding: 4rem 2rem 0;
+}
+
+.cards-titulo h2 {
+    font-size: 3.8rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1rem;
+}
+
+.cards-titulo p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* CONTAINER */
+/* ================================= */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8rem;
+    padding: 6rem 5%;
+}
+
+/* ================================= */
+/* CARD */
+/* ================================= */
+
+.card-wrap {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+
+.card {
+    position: relative;
+    width: 360px;
+    min-height: 430px;
+    overflow: hidden;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.196);
+
+    box-shadow:
+        0 20px 50px rgba(234, 234, 234, 0.122);
+
+    transition: .4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 30px 70px rgba(91,40,158,.2);
+}
+
+/* ================================= */
+/* IMAGENS */
+/* ================================= */
+
+.card-wrap:nth-child(1) .card-bg {
+    background-image: url("/img/cards_hero/nossa_missao.jpeg");
+}
+
+.card-wrap:nth-child(2) .card-bg {
+    background-image: url("/img/cards_hero/nossa_visao.jpeg");
+}
+
+.card-wrap:nth-child(3) .card-bg {
+    background-image: url("/img/cards_hero/nossos_valores.jpeg");
+}
+
+.card-bg {
+    position: absolute;
+    inset: -20px;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    pointer-events: none;
+
+    transition:
+        transform .5s ease,
+        filter .5s ease;
+}
+
+/* Escurece só onde precisa (topo, pro título, e embaixo, pro texto que
+   aparece no hover) — a foto no meio fica vívida, sem lavagem de cor. */
+.card-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(20,10,40,.8) 0%,
+            rgba(20,10,40,.15) 45%,
+            rgba(20,10,40,.4) 100%
+        );
+}
+
+.card-wrap:hover .card-bg {
+    transform: scale(1.05);
+    filter: saturate(1.15) brightness(1.03);
+}
+
+/* ================================= */
+/* CONTEÚDO */
+/* ================================= */
+
+.card-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 3rem;
+    color: white;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(20,10,40,.9),
+            transparent
+        );
+
+    max-height: 9.5rem;
+    overflow: hidden;
+
+    transition: max-height .5s ease;
+}
+
+.card-info h2 {
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,.6);
+    text-align: center;
+}
+
+.card-info p,
+.card-info ul {
+    opacity: 0;
+    text-shadow: 0 1px 6px rgba(0,0,0,.5);
+
+    transition:
+        opacity .35s ease;
+}
+
+/* ================================= */
+/* HOVER */
+/* ================================= */
+
+.card-wrap:hover .card-info {
+    max-height: 38rem;
+}
+
+.card-wrap:hover .card-info p,
+.card-wrap:hover .card-info ul {
+    opacity: 1;
+    transition-delay: .15s;
+}

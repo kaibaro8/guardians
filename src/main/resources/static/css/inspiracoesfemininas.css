@@ -1,0 +1,353 @@
+/* ================================= */
+/* SEÇÃO MUSEU                        */
+/* ================================= */
+
+.museu {
+    padding: 140px 0 60px;
+    overflow: hidden;
+}
+
+.museu h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 15px;
+}
+
+.museu > .container > p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+}
+
+
+/* ================================= */
+/* ÁREA PRINCIPAL: seta | palco | seta */
+/* ================================= */
+
+.museu-carrossel-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+/* ================================= */
+/* SETAS NAS LATERAIS                 */
+/* ================================= */
+
+.museu-seta {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: var(--cor-primaria);
+    color: white;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(91, 40, 158, 0.35);
+    transition: background .2s, transform .15s;
+    z-index: 200;
+}
+
+.museu-seta:hover {
+    background: var(--cor-texto-forte);
+    transform: scale(1.08);
+}
+
+
+/* ================================= */
+/* PALCO (COVERFLOW)                  */
+/* ================================= */
+
+.museu-stage {
+    position: relative;
+    flex: 1;
+    height: 480px;
+}
+
+.museu-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 70%;
+    height: 100%;
+    margin-left: -35%;
+
+    border-radius: 28px;
+    overflow: hidden;
+    cursor: pointer;
+
+    background-size: cover;
+    background-position: center top;
+
+    box-shadow: 0 25px 60px rgba(43, 17, 80, .25);
+
+    transition: transform .5s cubic-bezier(.25,.8,.3,1),
+                opacity .5s ease,
+                filter .5s ease;
+}
+
+
+/* ================================= */
+/* OVERLAY DE INFORMAÇÕES              */
+/* ================================= */
+
+.museu-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 40px 35px;
+    background: linear-gradient(
+            transparent 0%,
+            rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+.museu-info h3 {
+    color: white;
+    font-size: 3.2rem;
+    margin-bottom: 8px;
+}
+
+.museu-info span {
+    color: #e6e0f0;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.museu-info p {
+    color: white;
+    margin-top: 14px;
+    line-height: 1.65;
+    font-size: 1.6rem;
+    max-width: 640px;
+}
+
+.museu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    margin-top: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-bottom: 2px solid rgba(255,255,255,.4);
+    padding-bottom: 2px;
+    transition: .25s;
+}
+
+.museu-link:hover {
+    border-color: white;
+    gap: 1rem;
+}
+
+/* só o card central deixa o link/descrição clicáveis */
+.museu-card:not([style*="translateX(0"]) .museu-link {
+    pointer-events: none;
+}
+
+
+/* ================================= */
+/* BOLINHAS ABAIXO DO CARROSSEL       */
+/* ================================= */
+
+.museu-indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.museu-indicadores span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(91, 40, 158, 0.3);
+    cursor: pointer;
+    transition: background .25s, width .25s;
+    border: none;
+}
+
+.museu-indicadores span.ativo {
+    width: 32px;
+    border-radius: 50px;
+    background: var(--cor-primaria);
+}
+
+
+/* ================================= */
+/* SALAS — HISTÓRIA COMPLETA           */
+/* ================================= */
+
+.museu-salas-secao {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 2rem 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.museu-sala {
+    scroll-margin-top: 110px; /* compensa o header fixo ao navegar pela âncora */
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
+    align-items: center;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 30px;
+    padding: 2.5rem;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+
+.museu-sala:nth-child(even) {
+    grid-template-columns: 1fr 320px;
+}
+
+.museu-sala:nth-child(even) .museu-sala-foto {
+    order: 2;
+}
+
+.museu-sala-foto {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 22px;
+    background-size: cover;
+    background-position: center top;
+    box-shadow: 0 15px 35px rgba(43,17,80,.2);
+}
+
+.museu-sala-periodo {
+    font-size: 1.4rem;
+    color: var(--cor-primaria);
+    font-weight: 600;
+}
+
+.museu-sala-texto h2 {
+    font-size: 3rem;
+    color: var(--cor-texto-forte);
+    margin: .3rem 0 .2rem;
+}
+
+.museu-sala-area {
+    display: inline-block;
+    font-size: 1.3rem;
+    color: var(--cor-texto);
+    opacity: .75;
+    margin-bottom: 1.2rem;
+}
+
+.museu-sala-texto p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: var(--cor-texto);
+}
+
+.museu-sala-fonte,
+.museu-sala-fonte-texto {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    color: var(--cor-primaria);
+    font-weight: 600;
+}
+
+.museu-sala-fonte-texto {
+    color: var(--cor-texto);
+    opacity: .65;
+    font-weight: 500;
+}
+
+
+/* ================================= */
+/* RESPONSIVIDADE                     */
+/* ================================= */
+
+@media (max-width: 900px) {
+
+    .museu-stage {
+        height: 380px;
+    }
+
+    .museu-card {
+        width: 88%;
+        margin-left: -44%;
+    }
+
+    .museu-seta {
+        width: 40px;
+        height: 40px;
+        font-size: .9rem;
+    }
+
+    .museu-carrossel-area {
+        gap: 10px;
+    }
+
+    .museu-info {
+        padding: 25px 20px;
+    }
+
+    .museu-info h3 {
+        font-size: 2.1rem;
+    }
+
+    .museu-info span {
+        font-size: 1.3rem;
+    }
+
+    .museu-info p {
+        font-size: 1.35rem;
+    }
+
+    .museu-sala,
+    .museu-sala:nth-child(even) {
+        grid-template-columns: 1fr;
+    }
+
+    .museu-sala:nth-child(even) .museu-sala-foto {
+        order: 0;
+    }
+
+    .museu-sala-foto {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .museu-stage {
+        height: 300px;
+    }
+
+    .museu-card {
+        width: 94%;
+        margin-left: -47%;
+    }
+
+    .museu-seta {
+        width: 34px;
+        height: 34px;
+        font-size: .8rem;
+    }
+
+    .museu h2 {
+        font-size: 2rem;
+    }
+}

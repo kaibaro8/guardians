@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar no Blog | Guardiãs das Águas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/painel-admin.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/headeradmin :: headeradmin}"></div>
+
+<main class="admin-main">
+    <div class="painel-card">
+
+        <div class="painel-titulo">
+            <h2>📝 Nova Publicação</h2>
+        </div>
+
+        <p class="painel-subtitle">
+            Logado como <strong sec:authentication="name"></strong>
+        </p>
+
+        <div th:if="${sucesso}" class="alerta-sucesso" th:text="${sucesso}"></div>
+        <div th:if="${erro}"    class="alerta-erro"    th:text="${erro}"></div>
+
+        <form th:action="@{/operador/painel-blog/publicar}"
+              th:object="${blogDTO}"
+              method="post"
+              enctype="multipart/form-data">
+
+            <!-- TÍTULO -->
+            <div class="form-group">
+                <label>Título</label>
+                <input type="text"
+                       th:field="*{titulo}"
+                       placeholder="Título da publicação..."
+                       maxlength="200"
+                       required>
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea th:field="*{descricao}"
+                          rows="6"
+                          placeholder="Escreva a descrição da publicação..."
+                          required></textarea>
+            </div>
+
+            <!-- ARQUIVO -->
+            <div class="form-group">
+                <label>Arquivo (imagem ou vídeo)</label>
+                <input type="file"
+                       name="arquivo"
+                       accept="image/*,video/*"
+                       required>
+                <span class="campo-info">
+                    Formatos aceitos: JPG, PNG, GIF, WEBP, MP4, WEBM, MOV, AVI, MKV
+                </span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-salvar">📤 Publicar</button>
+            </div>
+
+        </form>
+
+        <hr class="divider">
+
+        <!--  Lista de publicações existentes  -->
+        <form th:action="@{/operador/painel-blog}" method="get">
+            <div class="title-search-bar">
+                <span class="section-title" style="margin:0; border:none; padding:0;">Pesquisar Publicação</span>
+                <input type="text" name="busca" th:value="${busca}" placeholder="Buscar por título...">
+                <label class="periodo-custom">
+                    De:
+                    <input type="date" name="dataInicio" th:value="${dataInicio}">
+                </label>
+                <label class="periodo-custom">
+                    Até:
+                    <input type="date" name="dataFim" th:value="${dataFim}">
+                </label>
+                <input type="hidden" name="size" th:value="${size}">
+                <button type="submit" class="btn-search">🔍 Buscar</button>
+                <a th:href="@{/operador/painel-blog}" class="btn-search-clear">Limpar</a>
+            </div>
+        </form>
+
+        <div class="table-controls">
+            <p class="section-title" style="margin:0;">
+                Publicações
+                <span class="badge-total" th:text="'(' + ${totalPosts} + ' encontrada(s))'"></span>
+            </p>
+            <div class="controls-right">
+                <label>
+                    Exibir:
+                    <select id="selectSize" class="select-small">
+                        <option th:each="op : ${sizeOptions}" th:value="${op}" th:text="${op}" th:selected="${op == size}"></option>
+                    </select>
+                    por página
+                </label>
+            </div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(posts)}" class="empty-msg">
+            Nenhuma publicação encontrada.
+        </div>
+
+        <div th:unless="${#lists.isEmpty(posts)}" class="eventos-table-wrap">
+        <table class="eventos-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Data</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.titulo}"></td>
+                    <td th:text="${#temporals.format(post.dataPublicacao, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td>
+                        <form th:action="@{/operador/painel-blog/deletar/{id}(id=${post.id})}" method="post" style="display:inline" onsubmit="return confirm('Confirma exclusão desta publicação?')">
+                            <button type="submit" class="btn-excluir">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="paginacao" th:if="${totalPages > 1}">
+            <a th:href="@{/operador/painel-blog(page=${currentPage-1},size=${size},busca=${busca},dataInicio=${dataInicio},dataFim=${dataFim})}" th:classappend="${currentPage==0}?'disabled'" class="btn-page">← Anterior</a>
+            <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{/operador/painel-blog(page=${i},size=${size},busca=${busca},dataInicio=${dataInicio},dataFim=${dataFim})}" th:text="${i+1}" th:classappend="${i==currentPage}?'active'" class="btn-page"></a>
+            </span>
+            <a th:href="@{/operador/painel-blog(page=${currentPage+1},size=${size},busca=${busca},dataInicio=${dataInicio},dataFim=${dataFim})}" th:classappend="${currentPage==totalPages-1}?'disabled'" class="btn-page">Próximo →</a>
+        </div>
+
+        <div class="painel-footer">
+            <a th:href="@{/blog}">← Ver Blog</a>
+        </div>
+
+    </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const selectSize = document.getElementById('selectSize');
+    if (selectSize) {
+        selectSize.addEventListener('change', function () {
+            const url = new URL(window.location.href);
+            url.searchParams.set('size', this.value);
+            url.searchParams.set('page', '0');
+            window.location.href = url.toString();
+        });
+    }
+});
+</script>
+<script type="module" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

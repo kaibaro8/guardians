@@ -1,0 +1,209 @@
+/* ================================= */
+/* HERO GALERIA */
+/* ================================= */
+
+.galeria-hero {
+    text-align: center;
+    padding: 140px 2rem 2rem;
+}
+
+.galeria-hero h1 {
+    font-size: 3.8rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1.2rem;
+}
+
+.galeria-hero p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    color: var(--cor-texto-forte);
+}
+
+/* ================================= */
+/* GRUPOS DE GALERIA */
+/* ================================= */
+
+.galeria-grid {
+    max-width: 1200px;
+    margin: 4rem auto 6rem;
+    padding: 0 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.galeria-grupo {
+    padding: 2.5rem;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.16);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+
+    transition: box-shadow .4s ease;
+}
+
+.galeria-grupo.destaque {
+    box-shadow: 0 0 0 3px var(--cor-primaria), 0 30px 70px rgba(91,40,158,.25);
+}
+
+.galeria-grupo h3 {
+    font-size: 2.2rem;
+    color: var(--cor-texto-forte);
+    margin-bottom: 2rem;
+}
+
+.galeria-grupo h3 span {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--cor-primaria);
+}
+
+.galeria-fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.galeria-foto {
+    height: 180px;
+    border-radius: 16px;
+    cursor: pointer;
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+    transition: .35s ease;
+}
+
+.galeria-foto:hover {
+    transform: scale(1.04);
+    box-shadow: 0 15px 35px rgba(91,40,158,.3);
+}
+
+.projetos-vazio {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--cor-texto-forte);
+    padding: 3rem 0;
+}
+
+/* ================================= */
+/* LIGHTBOX */
+/* ================================= */
+
+.galeria-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+
+    background: rgba(43,17,80,.7);
+    backdrop-filter: blur(8px);
+}
+
+.galeria-lightbox.ativo {
+    display: flex;
+}
+
+.galeria-lightbox img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.4);
+}
+
+.lightbox-fechar {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    z-index: 10;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.3);
+    color: #fff;
+    font-size: 1.6rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+
+    transition: .3s ease;
+}
+
+.lightbox-fechar:hover {
+    transform: scale(1.08);
+    background: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+/* ================================= */
+/* NAVEGAÇÃO DO LIGHTBOX (setas +     */
+/* contador) — usado pelo lightbox    */
+/* interno de Eventos e, futuramente, */
+/* pelo de Galeria.                   */
+/* ================================= */
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.3);
+    color: #fff;
+    font-size: 1.4rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+
+    transition: .3s ease;
+}
+
+.lightbox-nav:hover {
+    transform: translateY(-50%) scale(1.08);
+    background: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.lightbox-prev { left: 2.5rem; }
+.lightbox-next { right: 2.5rem; }
+
+.lightbox-contador {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: .4rem 1.2rem;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.3);
+    color: #fff;
+    font-size: .9rem;
+}

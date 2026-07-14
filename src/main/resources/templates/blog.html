@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Guardiãs das Águas</title>
+
+    
+    <script>
+        (function(){
+            var t = localStorage.getItem("guardias-tema");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        })();
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/darkmode.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════
+         HEADER
+     ═══════════════════════════════════════ -->
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- ═══════════════════════════════════════
+         BOTÃO — ADMINISTRADOR / OPERADOR
+     ═══════════════════════════════════════ -->
+
+<div class="painel-admin"
+     sec:authorize="isAuthenticated() and hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<!-- ═══════════════════════════════════════
+         CONTEÚDO PRINCIPAL
+     ═══════════════════════════════════════ -->
+
+<main>
+
+    <!-- HERO -->
+    <section class="blog-hero">
+        <h1>Blog</h1>
+        <p>Acompanhe as últimas notícias e novidades do Guardiãs das Águas.</p>
+    </section>
+
+    <!-- ESTADO VAZIO -->
+    <div th:if="${#lists.isEmpty(posts)}" class="blog-lista">
+        <p style="text-align:center; font-size:1.6rem; color:var(--cor-texto-forte); opacity:.7; padding:4rem 0;">
+            Nenhuma publicação ainda. Em breve novidades por aqui!
+        </p>
+    </div>
+
+    <!-- LISTA DE POSTS -->
+    <section class="blog-lista" th:unless="${#lists.isEmpty(posts)}">
+
+        <article class="noticia-card"
+                 th:each="post : ${posts}"
+                 th:data-titulo="${post.titulo != null} ? ${post.titulo} : 'Guardiãs das Águas'"
+                 th:data-descricao="${post.descricao}"
+                 th:data-texto-completo="${post.textoCompleto}"
+                 th:data-arquivo="${post.arquivo}"
+                 th:data-tipo="${post.tipoArquivo}"
+                 th:data-data="${#temporals.format(post.dataPublicacao, 'dd/MM/yyyy HH:mm')}"
+                 th:data-autor="${post.autor != null} ? ${post.autor.nome} : 'Guardiãs das Águas'">
+
+            <!-- IMAGEM -->
+            <div class="noticia-card-img"
+                 th:if="${post.tipoArquivo == 'imagem'}"
+                 th:style="'background-image: url(' + ${post.arquivo} + ')'">
+            </div>
+
+            <!-- THUMB VÍDEO -->
+            <div class="noticia-card-img noticia-card-img--video"
+                 th:if="${post.tipoArquivo == 'video'}">
+                <i class="fa-solid fa-circle-play"></i>
+            </div>
+
+            <!-- INFO -->
+            <div class="noticia-card-info">
+
+                <span class="noticia-card-data">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span th:text="${#temporals.format(post.dataPublicacao, 'dd/MM/yyyy HH:mm')}"></span>
+                </span>
+
+                <h3 th:text="${post.titulo != null} ? ${post.titulo} : 'Guardiãs das Águas'"></h3>
+
+                <p th:text="${#strings.abbreviate(post.descricao, 180)}"></p>
+
+                <span class="noticia-card-leia-mais">
+                    Leia a matéria completa <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════
+         MODAL DE MATÉRIA
+     ═══════════════════════════════════════ -->
+
+<div class="noticia-modal" id="blog-modal"></div>
+
+<!-- ═══════════════════════════════════════
+         FOOTER
+     ═══════════════════════════════════════ -->
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- ═══════════════════════════════════════
+         SCRIPTS
+     ═══════════════════════════════════════ -->
+
+<script type="module" th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/blog.js}"></script>
+
+</body>
+</html>

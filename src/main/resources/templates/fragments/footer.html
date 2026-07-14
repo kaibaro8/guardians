@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<th:block th:fragment="footer">
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <!-- MARCA -->
+        <div class="footer-brand">
+            <div class="footer-brand-logo">
+                <img th:src="@{/img/logos/Logo_Guardias_2.png}" alt="Guardiãs das Águas">
+            </div>
+            <p>
+                Promovendo educação ambiental e protagonismo feminino
+                através da ciência e da preservação dos recursos hídricos.
+            </p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/guardias.aguas" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@leatoxufu4347" target="_blank" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://open.spotify.com/playlist/1Vkzg5ApBOrj02JJZpiADG?si=Us4Ox_1lTY640OUntWiOSg" target="_blank" aria-label="Spotify">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="https://www.tiktok.com/@guardias.aguas?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- SOBRE -->
+        <div class="footer-nav">
+            <h4>Sobre</h4>
+            <ul>
+                <li><a th:href="@{/propostaDoProjeto}">Proposta do Projeto</a></li>
+                <li><a th:href="@{/inspiracoes-fem}">Inspirações Femininas</a></li>
+            </ul>
+        </div>
+
+        <!-- NÚCLEOS -->
+        <div class="footer-nav">
+            <h4>Núcleos</h4>
+            <ul>
+                <li><a th:href="@{/nucleosPeloBrasil}">Núcleos pelo Brasil</a></li>
+                <li><a th:href="@{/eventos}">Eventos</a></li>
+                <li><a th:href="@{/agenda}">Agenda</a></li>
+                <li><a th:href="@{/galeria}">Galeria</a></li>
+            </ul>
+        </div>
+
+        <!-- BLOG -->
+        <div class="footer-nav">
+            <h4>Blog</h4>
+            <ul>
+                <li><a th:href="@{/blog}">Blog</a></li>
+                <li><a th:href="@{/educacao-ambiental}">Educação Ambiental</a></li>
+                <li><a th:href="@{/jogos}">Jogos</a></li>
+            </ul>
+        </div>
+
+        <!-- CONTATO -->
+        <div class="footer-nav">
+            <h4>Contato</h4>
+            <ul>
+                <li><a th:href="@{/duvidas}">Dúvidas</a></li>
+                <li><a th:href="@{/denuncia}">Denuncie!</a></li>
+                <li><a th:href="@{/contato}">Fale Conosco</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <!-- PATROCINADORES -->
+    <div class="footer-patrocinadores">
+        <span>Apoio</span>
+        <div class="footer-patrocinadores-logos">
+            <img th:src="@{/img/parceiros/brasao_parceiros_2026.png}" alt="Parceiros">
+        </div>
+    </div>
+
+    <small class="footer-copyright">© 2026 Guardiãs das Águas</small>
+
+</footer>
+
+<!-- VLIBRAS — tradutor de Libras (acessibilidade) -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+</th:block>
+
+</body>
+</html>

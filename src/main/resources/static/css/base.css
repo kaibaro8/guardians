@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+
+    /* Impede que elementos decorativos (ex.: o brilho de fundo do mapa,
+       que se expande além da própria caixa via inset negativo) criem
+       rolagem horizontal na página no mobile e "empurrem" o header
+       fixo para fora da tela. */
+    overflow-x: hidden;
+
+}
+
+body{
+
+    font-family: var(--fonte-principal);
+    font-size: 1.6rem;
+    color: var(--cor-texto);
+
+    /* Mesmo motivo do html acima — garante a contenção mesmo se algum
+       navegador aplicar o overflow no body em vez do html. */
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            -45deg,
+            rgba(233,216,166,.6),
+            rgba(140,111,179,.6),
+            rgba(127,159,193,.6),
+            rgba(127,174,196,.6)
+        );
+
+    background-size: 300% 300%;
+    animation:
+        gradient 12s ease infinite;
+}
+
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    transition: .3s ease;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+p{
+    line-height: 1.6;
+}

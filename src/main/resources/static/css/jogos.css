@@ -1,0 +1,76 @@
+/* ================================= */
+/* SEÇÃO CTA — JOGOS                 */
+/* ================================= */
+
+.jogos-cta-secao {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 2rem 8rem;
+}
+
+.jogos-cta-card {
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+    padding: 5rem 3.5rem;
+    border-radius: 40px;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+
+    transition: .4s ease;
+}
+
+.jogos-cta-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 70px rgba(91,40,158,.2);
+}
+
+.jogos-cta-icone {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2.4rem;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    box-shadow: 0 15px 35px rgba(91,40,158,.35);
+}
+
+.jogos-cta-icone i {
+    font-size: 4.6rem;
+    color: #fff;
+}
+
+.jogos-cta-card h2 {
+    font-size: 2.6rem;
+    color: var(--cor-texto-forte);
+    text-shadow: var(--brilho-protetor);
+    margin-bottom: 1.4rem;
+}
+
+.jogos-cta-card p {
+    font-size: 1.6rem;
+    color: var(--cor-texto);
+    line-height: 1.7;
+    max-width: 460px;
+    margin: 0 auto 2.8rem;
+}
+
+.jogos-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.9rem;
+}
+
+@media (max-width: 600px) {
+    .jogos-cta-card {
+        padding: 4rem 2rem;
+    }
+}

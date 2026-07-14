@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos — Guardiãs das Águas</title>
+
+    <script>
+        (function(){
+            var t = localStorage.getItem("guardias-tema");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        })();
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/darkmode.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- BOTÃO ADMIN -->
+<div class="painel-admin"
+     sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<main>
+
+    <section class="projeto-geral-hero">
+        <h1>Jogos</h1>
+        <p>Aprenda brincando: jogos educativos sobre água, saneamento e meio ambiente.</p>
+    </section>
+
+    <section class="jogos-cta-secao">
+
+        <div class="jogos-cta-card has-shown">
+
+            <div class="jogos-cta-icone">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+
+            <h2>Central de Jogos</h2>
+
+            <p>
+                Preparamos uma seleção de jogos educativos sobre água,
+                sustentabilidade e meio ambiente em um espaço especial,
+                fora do nosso site. É só clicar e jogar!
+            </p>
+
+            <a href="https://senaigamehub.vercel.app/games?search=guardi%C3%A3s"
+               target="_blank" rel="noopener" class="btn-cta jogos-cta-btn">
+                <i class="fa-solid fa-play"></i> Jogar agora
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- SCRIPTS -->
+<script type="module" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

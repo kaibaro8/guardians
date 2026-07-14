@@ -1,0 +1,194 @@
+/* ================================= */
+/* INTRO */
+/* ================================= */
+
+.materiais-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+}
+
+.materiais-intro p {
+    font-size: 1.6rem;
+    color: var(--cor-texto);
+}
+
+/* ================================= */
+/* GRID */
+/* ================================= */
+
+.materiais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 6rem;
+    padding: 0 2rem;
+}
+
+.material-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+
+    transition: .4s ease;
+}
+
+.material-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 70px rgba(91,40,158,.2);
+}
+
+.material-card-img {
+    height: 170px;
+    background-size: cover;
+    background-position: center;
+}
+
+.material-card-img--sem-foto {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.material-card-img--sem-foto i {
+    font-size: 4rem;
+    color: #fff;
+    opacity: .9;
+}
+
+.material-card-corpo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    padding: 2.2rem 2.4rem 2.4rem;
+}
+
+.material-card-corpo h3 {
+    font-size: 2rem;
+    color: var(--cor-texto-forte);
+    line-height: 1.3;
+}
+
+.material-card-corpo p {
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.material-card-info {
+    font-size: 1.3rem;
+    color: var(--cor-texto);
+    opacity: .8;
+}
+
+.material-card-botoes {
+    display: flex;
+    gap: 1rem;
+    margin-top: .5rem;
+}
+
+.btn-visualizar,
+.btn-baixar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+
+    padding: 1rem 1.2rem;
+    border-radius: 50px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-align: center;
+    transition: .3s ease;
+
+    font-family: var(--fonte-principal);
+    cursor: pointer;
+}
+
+.material-card-botoes .btn-visualizar,
+.material-card-botoes .btn-baixar {
+    flex: 1;
+}
+
+.btn-visualizar {
+    background: transparent;
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+}
+
+.btn-visualizar:hover {
+    background: var(--cor-primaria);
+    color: #fff;
+}
+
+.btn-baixar {
+    background: var(--cor-primaria);
+    color: #fff;
+    border: 2px solid var(--cor-primaria);
+}
+
+.btn-baixar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(91,40,158,.3);
+}
+
+.materiais-vazio {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--cor-texto);
+    padding: 4rem 2rem;
+}
+
+/* Botão fechar do modal — nosso modal não tem foto de fundo,
+   então precisa de contraste escuro em vez do branco padrão. */
+#material-modal .noticia-modal-fechar {
+    background: rgba(91,40,158,.12);
+    color: var(--cor-primaria);
+    border-color: rgba(91,40,158,.25);
+}
+
+#material-modal .noticia-modal-fechar:hover {
+    background: var(--cor-primaria);
+    color: #fff;
+}
+
+.material-modal-detalhes {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.material-modal-detalhes li {
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+    padding-left: 1.6rem;
+    position: relative;
+}
+
+.material-modal-detalhes li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--cor-primaria);
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .material-card-botoes {
+        flex-direction: column;
+    }
+}

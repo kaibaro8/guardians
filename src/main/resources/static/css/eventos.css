@@ -1,0 +1,268 @@
+/* ================================= */
+/* CARDS DE EVENTO — info extra       */
+/* ================================= */
+
+.evento-card-data,
+.evento-card-local {
+    font-size: 1.3rem;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    margin-bottom: .4rem;
+}
+
+.evento-card-data i,
+.evento-card-local i {
+    margin-right: .4rem;
+}
+
+.evento-card-resumo {
+    font-size: 1.35rem;
+    color: var(--cor-texto);
+    margin-top: .8rem;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ================================= */
+/* MODAL DE EVENTO — layout novo      */
+/* ================================= */
+
+/*
+ * Substitui o grid de 2 colunas (imagem | texto) por um layout
+ * vertical: capa larga em cima, texto abaixo, galeria de fotos no fim.
+ * O max-width é aumentado para dar mais espaço às fotos.
+ */
+
+.evento-modal-conteudo {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: unset !important;
+    max-width: 1000px !important;
+    padding: 0;
+}
+
+/* Topo: capa + texto lado a lado em telas grandes */
+/* Topo: capa + texto lado a lado em telas grandes */
+.evento-modal-topo {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    min-height: 320px;
+
+    /*
+     * Sem isso, quando o conteúdo total do modal é maior que os
+     * 90vh (max-height do .projeto-modal-conteudo) e o modal precisa
+     * rolar, o algoritmo do flex (pai) encolhe este grid até o
+     * min-height, ignorando que o conteúdo real (imagem + cabeçalho)
+     * é mais alto. O resultado: os elementos seguintes (abas/texto)
+     * começam antes do fim real do cabeçalho e ficam por cima dele.
+     */
+    flex-shrink: 0;
+}
+.evento-modal-capa {
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px 0 0 0;
+}
+
+.evento-modal-header {
+    padding: 3.5rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    min-width: 0;
+
+}
+
+.evento-modal-header h2 {
+    font-size: 2.6rem;
+    color: var(--cor-texto-forte);
+    margin: .6rem 0 .5rem;
+    line-height: 1.25;
+}
+
+.evento-modal-header .projeto-modal-local {
+    font-size: 1.35rem;
+    margin-bottom: .8rem;
+}
+
+.evento-modal-header > p:last-child {
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* ================================= */
+/* NAVEGAÇÃO POR ABAS (Sobre/Galeria  */
+/* ou Tema 1..5, dentro do modal)     */
+/* ================================= */
+
+.evento-modal-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    padding: 1.6rem 3rem 0;
+    border-top: 1px solid rgba(0,0,0,.08);
+}
+
+.evento-modal-nav-btn {
+    border: 1px solid rgba(91,40,158,.25);
+    background: transparent;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: .6rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .2s ease;
+    white-space: nowrap;
+}
+
+.evento-modal-nav-btn:hover {
+    background: rgba(91,40,158,.08);
+}
+
+.evento-modal-nav-btn.ativo {
+    background: var(--cor-primaria);
+    color: #fff;
+    border-color: var(--cor-primaria);
+}
+
+/* Corpo da aba ativa (texto + galeria) */
+.evento-modal-corpo {
+    padding: 2rem 3rem 3rem;
+}
+
+.evento-modal-texto p {
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+    line-height: 1.7;
+    margin: 0 0 1.2rem;
+}
+
+.evento-secao-data {
+    font-size: 1.35rem !important;
+    color: var(--cor-primaria) !important;
+    font-weight: 600;
+}
+
+.evento-secao-data i {
+    margin-right: .4rem;
+}
+
+.evento-sem-fotos {
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+    opacity: .7;
+    font-style: italic;
+}
+
+.evento-ver-mais-fotos {
+    display: block;
+    margin: 1.5rem auto 0;
+    border: 1px solid rgba(91,40,158,.3);
+    background: transparent;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: .7rem 1.8rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.evento-ver-mais-fotos:hover {
+    background: var(--cor-primaria);
+    color: #fff;
+}
+
+/* Galeria de fotos embaixo do modal */
+.evento-modal-galeria {
+    padding: 0;
+}
+
+.evento-modal-galeria h4 {
+    font-size: 1.6rem;
+    color: var(--cor-texto-forte);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.evento-modal-fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.2rem;
+}
+
+.evento-modal-foto {
+    height: 150px;
+    border-radius: 14px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,.1);
+    transition: .3s ease;
+}
+
+.evento-modal-foto:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 28px rgba(91,40,158,.28);
+}
+
+/* ================================= */
+/* GALERIA — header do grupo          */
+/* ================================= */
+
+.galeria-grupo-header {
+    margin-bottom: 2rem;
+}
+
+.galeria-grupo-meta {
+    font-size: 1.35rem;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    margin-top: .5rem;
+}
+
+.galeria-grupo-meta i {
+    margin-right: .35rem;
+}
+
+/* ================================= */
+/* RESPONSIVO                         */
+/* ================================= */
+
+@media (max-width: 700px) {
+
+    .evento-modal-topo {
+        grid-template-columns: 1fr;
+    }
+
+    .evento-modal-capa {
+        height: 200px;
+        border-radius: 30px 30px 0 0;
+    }
+
+    .evento-modal-header {
+        padding: 2.5rem 2rem 2rem;
+    }
+
+    .evento-modal-nav {
+        padding: 1.2rem 2rem 0;
+    }
+
+    .evento-modal-corpo {
+        padding: 1.5rem 2rem 2rem;
+    }
+
+    .evento-modal-fotos {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+
+    .evento-modal-foto {
+        height: 120px;
+    }
+}

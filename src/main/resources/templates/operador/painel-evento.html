@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar Evento | Guardiãs das Águas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/painel-admin.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/headeradmin :: headeradmin}"></div>
+
+<main class="admin-main">
+    <div class="painel-card">
+
+        <div class="painel-titulo">
+            <h2>📸 Nova Postagem de Evento</h2>
+        </div>
+
+        <p class="painel-subtitle">
+            Logado como <strong sec:authentication="name"></strong>
+        </p>
+
+
+        <div th:if="${sucesso}" class="alerta-sucesso" th:text="${sucesso}"></div>
+        <div th:if="${erro}"    class="alerta-erro"    th:text="${erro}"></div>
+
+        <form th:action="@{/operador/painel-evento/publicar}"
+              th:object="${postagemDTO}"
+              method="post"
+              enctype="multipart/form-data">
+
+            <!-- TÍTULO -->
+            <div class="form-group">
+                <label>Título do Evento</label>
+                <input type="text"
+                       th:field="*{titulo}"
+                       placeholder="Ex: Dia Mundial da Água no Parque do Sabiá"
+                       maxlength="200"
+                       required>
+            </div>
+
+            <!-- NÚCLEO / DATA -->
+            <div class="form-linha-dupla">
+                <div class="form-group">
+                    <label>Núcleo</label>
+                    <select th:field="*{nucleo}" required>
+                        <option value="" disabled selected>— Selecione —</option>
+                        <option th:each="n : ${nucleos}" th:value="${n}" th:text="${n}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Data do Evento</label>
+                    <input type="date" th:field="*{data}" required>
+                </div>
+            </div>
+
+            <!-- LOCAL -->
+            <div class="form-group">
+                <label>Local / Endereço</label>
+                <input type="text"
+                       th:field="*{local}"
+                       placeholder="Ex: Parque do Sabiá, Uberlândia – MG">
+            </div>
+
+            <!-- RESUMO -->
+            <div class="form-group">
+                <label>Resumo (aparece no card de prévia)</label>
+                <textarea th:field="*{resumo}"
+                          rows="3"
+                          placeholder="Um resumo curto do evento..."
+                          required></textarea>
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <div class="form-group">
+                <label>Descrição completa</label>
+                <textarea th:field="*{descricao}"
+                          rows="8"
+                          placeholder="Conte como foi o evento..."
+                          required></textarea>
+            </div>
+
+            <!-- FOTOS -->
+            <div class="form-group">
+                <label>Fotos do Evento</label>
+                <input type="file"
+                       name="fotos"
+                       accept="image/*"
+                       multiple
+                       required>
+                <span class="campo-info">
+                    A primeira foto selecionada vira a capa do evento. Todas aparecem na Galeria.
+                </span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-salvar">📤 Publicar Evento</button>
+            </div>
+
+        </form>
+
+        <hr class="divider">
+
+        <!-- Lista de eventos já publicados -->
+        <p class="section-title">Eventos Publicados</p>
+
+        <div th:if="${#lists.isEmpty(postagens)}" class="empty-msg">
+            Nenhum evento publicado ainda.
+        </div>
+
+        <div th:unless="${#lists.isEmpty(postagens)}" class="eventos-table-wrap">
+        <table class="eventos-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Núcleo</th>
+                    <th>Data</th>
+                    <th>Fotos</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="post : ${postagens}">
+                    <td th:text="${post.titulo}"></td>
+                    <td th:text="${post.nucleo}"></td>
+                    <td th:text="${#temporals.format(post.data, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#lists.size(post.fotos)}"></td>
+                    <td>
+                        <form th:action="@{/operador/painel-evento/deletar/{id}(id=${post.id})}" method="post" style="display:inline" onsubmit="return confirm('Confirma exclusão deste evento? As fotos somem da Galeria também.')">
+                            <button type="submit" class="btn-excluir">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="painel-footer">
+            <a th:href="@{/eventos}">← Ver Eventos</a>
+        </div>
+
+    </div>
+</main>
+
+<script type="module" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

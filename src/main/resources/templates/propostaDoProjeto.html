@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta do Projeto — Guardiãs das Águas</title>
+
+    <script>
+        (function(){
+            var t = localStorage.getItem("guardias-tema");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        })();
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/darkmode.css}">
+    <link rel="stylesheet" th:href="@{/css/projeto-geral.css}">
+    <link rel="stylesheet" th:href="@{/css/projetos.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════
+         HEADER
+     ═══════════════════════════════════════ -->
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- ═══════════════════════════════════════
+         BOTÃO — ADMINISTRADOR / OPERADOR
+     ═══════════════════════════════════════ -->
+
+<div class="painel-admin"
+     sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_OPERADOR')">
+    <a th:href="@{/operador/painel}" class="toggle-sidebar" aria-label="Abrir painel">
+        <img th:src="@{/img/btn-engrenagem.png}" alt="Painel Admin" width="32" height="32">
+    </a>
+</div>
+
+<!-- ═══════════════════════════════════════
+         CONTEÚDO PRINCIPAL
+     ═══════════════════════════════════════ -->
+
+<main>
+
+    <!-- HERO DA PÁGINA -->
+
+    <section class="projeto-geral-hero">
+        <h1>Proposta do Projeto</h1>
+        <p>Conheça o objetivo do Guardiãs das Águas, a equipe que faz o projeto acontecer e até onde já conseguimos chegar pelo Brasil.</p>
+    </section>
+
+    <!-- SOBRE O PROJETO -->
+
+    <section class="proposta-objetivo">
+        <p>
+            O <strong>Guardiãs das Águas</strong> é apoiado pelo Conselho Nacional de Desenvolvimento Científico e
+            Tecnológico (CNPq), pelo Ministério da Ciência, Tecnologia e Inovação (MCTI) e pelo Ministério das Mulheres (MM),
+            na Chamada CNPq/MCTI/MMulheres nº 31/2023. Nossa missão é incluir meninas e mulheres nas Ciências, promovendo
+            ações locais de saneamento ambiental e de conservação dos ecossistemas aquáticos.
+        </p>
+    </section>
+
+    <!-- OBJETIVOS -->
+
+    <section class="secao-titulo">
+        <h2>Nossos Objetivos</h2>
+    </section>
+
+    <section class="objetivos-grid">
+
+        <div class="objetivo-card">
+            <span class="objetivo-numero">01</span>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <p>
+                Estimular o interesse, o ingresso e a formação de grupos de Guardiãs das Águas,
+                promovendo o pensamento crítico e participativo de meninas acerca da cidadania,
+                empoderamento feminino e meio ambiente, para que possam estudar e atuar
+                profissionalmente em carreiras ligadas às Ciências Exatas, Engenharias e
+                Computação, principalmente no saneamento ambiental.
+            </p>
+        </div>
+
+        <div class="objetivo-card">
+            <span class="objetivo-numero">02</span>
+            <i class="fa-solid fa-people-roof"></i>
+            <p>
+                Fortalecer grupos locais que desenvolvem pesquisas relacionadas ao saneamento
+                ambiental, ampliando o debate com a sociedade civil local a partir de ações
+                extensionistas.
+            </p>
+        </div>
+
+        <div class="objetivo-card">
+            <span class="objetivo-numero">03</span>
+            <i class="fa-solid fa-seedling"></i>
+            <p>
+                Formar mulheres e meninas para atuar como agentes multiplicadoras nas comunidades
+                a que pertencem, estimulando a percepção ambiental da comunidade em relação à
+                importância do saneamento ambiental — sobretudo quanto à conservação dos recursos
+                hídricos, ao tratamento de água e esgoto, à redução e destinação correta dos
+                resíduos sólidos, e à compreensão das fontes de poluição e métodos de controle.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- EQUIPE -->
+
+    <section class="secao-titulo">
+        <h2>Nossa Equipe</h2>
+        <p>As pessoas que fazem o Guardiãs das Águas acontecer todos os dias.</p>
+    </section>
+
+    <section class="carrossel-genérico-wrap">
+        <div id="carrossel-equipe"></div>
+    </section>
+
+    <!-- PARCEIROS -->
+
+    <section class="secao-titulo">
+        <h2>Parceiros</h2>
+        <p>Instituições que apoiam o Guardiãs das Águas.</p>
+    </section>
+
+    <section class="parceiros-secao">
+
+        <div class="parceiros-filtro">
+            <button type="button" class="parceiros-ano" data-ano="2025">2025</button>
+            <button type="button" class="parceiros-ano ativo" data-ano="2026">2026</button>
+        </div>
+
+        <div class="parceiros-imagem-wrap">
+            <img th:src="@{/img/parceiros/brasao_parceiros_2026.png}" alt="Parceiros 2026" id="parceiros-imagem">
+        </div>
+
+    </section>
+
+    <!-- MAPA DE NÚCLEOS (mesmo bloco central usado em Início e Núcleos pelo Brasil) -->
+
+    <section class="mapa has-shown">
+        <div class="container">
+            <h2>Até onde já chegamos</h2>
+            <p>Clique em um núcleo para conhecer os eventos daquela região.</p>
+
+            <div class="mapa-ano-filtro" id="mapa-ano-filtro"></div>
+
+            <section class="mapa-brasil-secao">
+                <div class="mapa-brasil-wrap">
+                    <div id="mapa-brasil"></div>
+                </div>
+                <div class="mapa-brasil-cards" id="mapa-brasil-cards"></div>
+            </section>
+        </div>
+    </section>
+
+    <!-- FAÇA PARTE -->
+
+    <section class="faca-parte">
+
+        <div class="faca-parte-glow"></div>
+
+        <div class="container faca-parte-conteudo">
+
+            <div class="faca-parte-marca">
+                <img th:src="@{/img/logos/Logo_Guardias.png}" alt="Guardiãs das Águas" class="faca-parte-marca-logo">
+                <span class="faca-parte-marca-texto">Guardiãs das Águas</span>
+            </div>
+
+            <h2>Vem ser uma Guardiã!</h2>
+
+            <p>
+                Escolha como você quer fazer parte dessa causa. Cada gota conta —
+                e a sua pode transformar uma comunidade inteira.
+            </p>
+
+            <div class="faca-parte-opcoes">
+
+                <a th:href="@{/contato}" class="faca-parte-card">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <h3>Seja Voluntária</h3>
+                    <p>Participe das atividades e oficinas com meninas e mulheres do seu núcleo.</p>
+                    <span class="faca-parte-card-cta">Quero ser voluntária <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a th:href="@{/contato}" class="faca-parte-card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h3>Seja Parceira</h3>
+                    <p>Sua instituição pode apoiar o projeto com estrutura, recursos ou conhecimento.</p>
+                    <span class="faca-parte-card-cta">Quero ser parceira <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a th:href="@{/contato}" class="faca-parte-card">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <h3>Apoie o Projeto</h3>
+                    <p>Ajude a levar educação ambiental e ciência para mais meninas pelo Brasil.</p>
+                    <span class="faca-parte-card-cta">Quero apoiar <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════
+         FOOTER
+     ═══════════════════════════════════════ -->
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- ═══════════════════════════════════════
+         SCRIPTS
+     ═══════════════════════════════════════ -->
+
+<script type="module" th:src="@{/js/script.js}"></script>
+<script type="module" th:src="@{/js/propostaDoProjeto.js}"></script>
+
+</body>
+</html>
